@@ -19,12 +19,10 @@ async function RunExamples() {
         Endpoint.DefaultApiKey = testParams.ApiKey;
         Endpoint.DefaultBaseUrl = testParams.BaseUrl;
 
-    /*    PrintDivider("Image Info (1)");
+       PrintDivider("Image Info (1)");
         await ImageInfoExample.ImageInfoExampleOne();
-        PrintDivider("Image Info (2)");
-        await ImageInfoExample.ImageInfoExampleTwo();
-    */    PrintDivider("Dlex Layout");
-        await DlexLayoutExample.Run();
+    //    PrintDivider("Dlex Layout");
+    //    await DlexLayoutExample.Run();
     /*    PrintDivider("Pdf Xmp");
         await PdfXmpExample.Run();
         PrintDivider("Pdf Info");
