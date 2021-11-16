@@ -19,13 +19,13 @@ async function RunExamples() {
         Endpoint.DefaultApiKey = testParams.ApiKey;
         Endpoint.DefaultBaseUrl = testParams.BaseUrl;
 
-        PrintDivider("Image Info (1)");
+    /*    PrintDivider("Image Info (1)");
         await ImageInfoExample.ImageInfoExampleOne();
         PrintDivider("Image Info (2)");
         await ImageInfoExample.ImageInfoExampleTwo();
-        PrintDivider("Dlex Layout");
+    */    PrintDivider("Dlex Layout");
         await DlexLayoutExample.Run();
-        PrintDivider("Pdf Xmp");
+    /*    PrintDivider("Pdf Xmp");
         await PdfXmpExample.Run();
         PrintDivider("Pdf Info");
         await PdfInfoExample.Run();
@@ -35,7 +35,7 @@ async function RunExamples() {
         await PdfTextExample.Run();
 
         PrintDivider("Instructions Demo");
-        await InstructionsExample.Run();
+        await InstructionsExample.Run(); */
     } catch (err) {
         console.log(err);
     }
