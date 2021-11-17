@@ -8,6 +8,8 @@ import { PdfInfoExample } from "./PdfInfoExample.js";
 import { ImageInfoExample } from "./ImageInfoExample.js";
 import { PdfExample } from "./PdfExample.js";
 import { PdfTextExample } from "./PdfTextExample.js";
+import {PdfMergeTutorial} from "./PdfMergeTutorial.js";
+import {PdfFormFillExample} from "./PdfFormFillExample.js";
 
 async function RunExamples() {
     var testParams = new TestParams();
@@ -19,8 +21,13 @@ async function RunExamples() {
         Endpoint.DefaultApiKey = testParams.ApiKey;
         Endpoint.DefaultBaseUrl = testParams.BaseUrl;
 
-       PrintDivider("Image Info (1)");
-        await ImageInfoExample.ImageInfoExampleOne();
+        await PdfFormFillExample.Run();
+
+       // PrintDivider("PdfMergeTutorial");
+      //  await PdfMergeTutorial.Run();
+
+//       PrintDivider("Image Info (1)");
+//        await ImageInfoExample.ImageInfoExampleOne();
     //    PrintDivider("Dlex Layout");
     //    await DlexLayoutExample.Run();
     /*    PrintDivider("Pdf Xmp");

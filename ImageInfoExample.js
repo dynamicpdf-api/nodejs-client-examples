@@ -1,13 +1,16 @@
 import {
     ImageResource,
-    ImageInfo
+    ImageInfo,
+    Pdf
 } from "@dynamicpdf/api"
 
 export class ImageInfoExample {
     static async ImageInfoExampleOne() {
-        var imageResource = new ImageResource("./Resources/client-libraries-examples/dynamicpdflogo.png");
-        var imageInfo = new ImageInfo(imageResource);
-        var res = await imageInfo.Process();
+
+        var pdf = new Pdf();
+        var pdfResource = new PdfResource(basePath + "fw9AcroForm_18.pdf");
+        pdf.addPdf(pdfResource);
+
         if (res.IsSuccessful) {
             console.log(JSON.parse(res.Content));
         }
