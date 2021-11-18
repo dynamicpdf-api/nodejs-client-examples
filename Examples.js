@@ -8,7 +8,7 @@ import { PdfInfoExample } from "./PdfInfoExample.js";
 import { ImageInfoExample } from "./ImageInfoExample.js";
 import { PdfExample } from "./PdfExample.js";
 import { PdfTextExample } from "./PdfTextExample.js";
-import {PdfMergeTutorial} from "./PdfMergeTutorial.js";
+import {SimpleDlexMergeExample} from "./SimpleDlexMergeExample.js";
 import {PdfFormFillExample} from "./PdfFormFillExample.js";
 
 async function RunExamples() {
@@ -21,7 +21,9 @@ async function RunExamples() {
         Endpoint.DefaultApiKey = testParams.ApiKey;
         Endpoint.DefaultBaseUrl = testParams.BaseUrl;
 
-        await PdfFormFillExample.Run();
+        //await PdfFormFillExample.Run();
+
+        await SimpleDlexMergeExample.Run();
 
        // PrintDivider("PdfMergeTutorial");
       //  await PdfMergeTutorial.Run();
