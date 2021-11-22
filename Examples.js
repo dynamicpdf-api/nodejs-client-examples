@@ -10,8 +10,11 @@ import { PdfExample } from "./PdfExample.js";
 import { PdfTextExample } from "./PdfTextExample.js";
 import {SimpleDlexMergeExample} from "./SimpleDlexMergeExample.js";
 import {PdfFormFillExample} from "./PdfFormFillExample.js";
+import {OutlineTutorialExample} from "./OutlineTutorialExample.js";
+import {SimpleFormFillExample} from "./SimpleFormFillExample.js";
 
 async function RunExamples() {
+    
     var testParams = new TestParams();
     if (testParams.AuthTLS == false) {
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
@@ -21,9 +24,13 @@ async function RunExamples() {
         Endpoint.DefaultApiKey = testParams.ApiKey;
         Endpoint.DefaultBaseUrl = testParams.BaseUrl;
 
+       // await OutlineTutorialExample.Run();
+
+       await SimpleFormFillExample.Run();
+
         //await PdfFormFillExample.Run();
 
-        await SimpleDlexMergeExample.Run();
+        //await SimpleDlexMergeExample.Run();
 
        // PrintDivider("PdfMergeTutorial");
       //  await PdfMergeTutorial.Run();
