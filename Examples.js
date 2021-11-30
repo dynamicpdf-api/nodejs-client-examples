@@ -18,8 +18,8 @@ async function RunExamples() {
     }
 
     try {
-        Endpoint.DefaultApiKey = testParams.ApiKey;
-        Endpoint.DefaultBaseUrl = testParams.BaseUrl;
+        Endpoint.DefaultApiKey = "DP.poEtD7F5tD1Ulp3qPcolUFaCcQFxWOvuNUqm/WragUdOSaAesnu3L6XE";
+        Endpoint.DefaultBaseUrl = "https://api.dynamicpdf.com/v1.0/";
 
         //await PdfFormFillExample.Run();
 
@@ -38,9 +38,8 @@ async function RunExamples() {
         await PdfInfoExample.Run();
         PrintDivider("Pdf Creation");
         await PdfExample.Run();
-        PrintDivider("Pdf Text Extration");
+        PrintDivider("Pdf Text Extraction");
         await PdfTextExample.Run();
-
         PrintDivider("Instructions Demo");
         await InstructionsExample.Run(); */
     } catch (err) {
