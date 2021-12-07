@@ -1,6 +1,5 @@
 import { Endpoint } from "@dynamicpdf/api"
 
-import { TestParams } from './init.js';
 import { DlexLayoutExample } from "./DlexLayoutExample.js"
 import { InstructionsExample } from "./instructions/InstructionsExample.js";
 import { PdfXmpExample } from "./PdfXmpExample.js";
@@ -12,21 +11,17 @@ import {SimpleDlexMergeExample} from "./SimpleDlexMergeExample.js";
 import {PdfFormFillExample} from "./PdfFormFillExample.js";
 import {OutlineTutorialExample} from "./OutlineTutorialExample.js";
 import {SimpleFormFillExample} from "./SimpleFormFillExample.js";
+import {GettingStartedInFive} from "./GettingStartedInFive.js";
 
 async function RunExamples() {
     
-    var testParams = new TestParams();
-    if (testParams.AuthTLS == false) {
-        process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-    }
-
     try {
-        Endpoint.DefaultApiKey = testParams.ApiKey;
-        Endpoint.DefaultBaseUrl = testParams.BaseUrl;
+
 
        // await OutlineTutorialExample.Run();
 
-       await SimpleFormFillExample.Run();
+       await GettingStartedInFive.Run();
+       //await SimpleFormFillExample.Run();
 
         //await PdfFormFillExample.Run();
 
@@ -53,12 +48,6 @@ async function RunExamples() {
     } catch (err) {
         console.log(err);
     }
-}
-
-function PrintDivider(title){
-    console.log("\n============================================");
-    console.log(title);
-    console.log("============================================");
 }
 
 RunExamples();
