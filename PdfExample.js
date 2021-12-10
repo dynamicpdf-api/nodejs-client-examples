@@ -2,7 +2,7 @@ import fs from 'fs';
 import {
     Pdf,
     PageNumberingElement,
-    ElementPlacement,
+    elementPlacement,
     RgbColor,
     Font
 } from "@dynamicpdf/api"
@@ -10,17 +10,17 @@ import {
 export class PdfExample {
     static async Run() {
         var pdf = new Pdf();
-        var pageInput = pdf.AddPage(1008, 612);
-        var pageNumberingElement = new PageNumberingElement("1", ElementPlacement.TopRight);
-        pageNumberingElement.Color = RgbColor.Red;
-        pageNumberingElement.Font = Font.Courier;
-        pageNumberingElement.FontSize = 24;
-        pageInput.Elements.push(pageNumberingElement);
-        var res = await pdf.Process();
-        if (res.IsSuccessful) {
+        var pageInput = pdf.addPage(1008, 612);
+        var pageNumberingElement = new PageNumberingElement("1", elementPlacement.topRight);
+        pageNumberingElement.color = RgbColor.red;
+        pageNumberingElement.font = Font.courier;
+        pageNumberingElement.fontSize = 24;
+        pageInput.elements.push(pageNumberingElement);
+        var res = await pdf.process();
+        if (res.isSuccessful) {
             var outFile = "./output/pageExample.pdf";
             var outStream = fs.createWriteStream(outFile);
-            outStream.write(res.Content);
+            outStream.write(res.content);
             outStream.close();
             console.log("Pdf was generated and saved at: ", outFile);
         }
