@@ -12,7 +12,7 @@ export class MergePdfs {
     static async Run() {
               
         var pdf = new Pdf();
-       var pdfInput = pdf.AddPdf(new PdfResource("C:/temp/dynamicpdf-api-samples/DocumentA.pdf"));
+        var pdfInput = pdf.AddPdf(new PdfResource("C:/temp/dynamicpdf-api-samples/DocumentA.pdf"));
         pdfInput.StartPage = 1;
         pdfInput.PageCount = 1;
 
