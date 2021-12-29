@@ -19,37 +19,8 @@ import {
 
 export class InstructionsExample {
 
-    static async Run() {
-        await this.TemplateExample();
-        await this.MergeOptions();
-        await this.MergingExample();
-        await this.AddOutlinesExistingPdf();
-        await this.AddOutlinesForNewPdf();
-        await this.TopLevelMetaData();
-        await this.FormFieldsExample();
-        await this.SecurityExample();
-        await this.BarcodeExample();
-    }
 
-    static async ExampleDemo(pdf, outFileName) {
-        try {
-            var res = await pdf.Process();
-        }
-        catch (e) {
-            console.log(e);
-            console.log("\n" + "------------------------------------------------------------------");
-            return;
-        }
 
-        if (res.IsSuccessful) {
-            var outStream = fs.createWriteStream(`./Output/${outFileName}.pdf`);
-            outStream.write(res.Content);
-            outStream.close();
-            console.log(`PDF Created (using following instructions): ./Output/${outFileName}.pdf\n`);
-            console.log(JSON.parse(pdf.GetInstructionsJson()));
-            console.log("\n" + "------------------------------------------------------------------");
-        }
-    }
     static async TemplateExample() {
         var pdf = new Pdf();
         pdf.Author = "John User";
@@ -174,21 +145,6 @@ export class InstructionsExample {
         await this.ExampleDemo(pdf, "AddOutlinesForNewPdf");
     }
 
-    static async TopLevelMetaData() {
-
-        var pdf = new Pdf();
-        pdf.AddPage(1008, 612);
-
-        // top level pdf document metadata
-
-        pdf.Author = "John Doe";
-        pdf.Keywords = "dynamicpdf api example pdf java instructions";
-        pdf.Creator = "John Creator";
-        pdf.Subject = "topLevel document metadata";
-        pdf.Title = "Sample PDF";
-
-        await this.ExampleDemo(pdf, "TopLevelMetaData");
-    }
     static async FormFieldsExample() {
 
         var pdf = new Pdf();
@@ -237,3 +193,4 @@ export class InstructionsExample {
         await this.ExampleDemo(pdf, "BarcodeExample");
     }
 }
+await InstructionsExample.Run();
