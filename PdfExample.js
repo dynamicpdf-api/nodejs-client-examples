@@ -8,8 +8,13 @@ import {
 } from "@dynamicpdf/api"
 
 export class PdfExample {
+
+    
     static async Run() {
+        var basePath = "C:/temp/dynamicpdf-api-usersguide-examples/";
+        var apiKey = "DP.TrJj2UBRFfrxiLYYD9xQryHXnFoSRKVPTBYH0LRpVWWnTZPOmgRO6yX6";
         var pdf = new Pdf();
+        pdf.ApiKey = apiKey;
         var pageInput = pdf.AddPage(1008, 612);
         var pageNumberingElement = new PageNumberingElement("1", ElementPlacement.TopRight);
         pageNumberingElement.Color = RgbColor.Red;
@@ -18,11 +23,11 @@ export class PdfExample {
         pageInput.Elements.push(pageNumberingElement);
         var res = await pdf.Process();
         if (res.IsSuccessful) {
-            var outFile = "./output/pageExample.pdf";
+            var outFile = "nodejs-pdf-example-output.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.Content);
             outStream.close();
-            console.log("Pdf was generated and saved at: ", outFile);
         }
     }
 }
+await PdfExample.Run();

@@ -6,18 +6,20 @@ import {
 
 export class DlexLayoutExample {
     static async Run() {
-        var layoutData = new LayoutDataResource("./Resources/client-libraries-examples/getting-started-data.json");
-        var dlexEndpoint = new DlexLayout("samples/shared/dlex/getting-started.dlex", layoutData);
+        var layoutData = new LayoutDataResource("C:/temp/dynamicpdf-api-samples/create-pdf-dlex/SimpleReportWithCoverPage.json");
+        var dlexEndpoint = new DlexLayout("samples/dlex-layout/SimpleReportWithCoverPage.dlex", layoutData);
+        dlexEndpoint.ApiKey = "DP.TrJj2UBRFfrxiLYYD9xQryHXnFoSRKVPTBYH0LRpVWWnTZPOmgRO6yX6";
+
         var res = await dlexEndpoint.Process();
         
         if (res.IsSuccessful) {
-            var outFile = "./output/dlex-output.pdf";
+            var outFile = "C:/temp/dynamicpdf-api-samples/create-pdf-dlex/nodejs-dlex-layout-example-output.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.Content);
             outStream.close();
-            console.log("Pdf was generated and saved at: " + outFile);
         } else {
             console.log(PrettyPrintUtil.JsonPrettify(response.ErrorJson));
         }
     }
 }
+await DlexLayoutExample.Run();

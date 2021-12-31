@@ -1,18 +1,38 @@
 import {
     ImageResource,
     ImageInfo,
-    Pdf
 } from "@dynamicpdf/api"
 
 export class ImageInfoExample {
-    static async ImageInfoExampleOne() {
 
-        var pdf = new Pdf();
-        var pdfResource = new PdfResource(basePath + "fw9AcroForm_18.pdf");
-        pdf.addPdf(pdfResource);
+    static async Run() {
+        var basePath = "C:/temp/dynamicpdf-api-usersguide-examples/";
+        var apiKey = "DP.TrJj2UBRFfrxiLYYD9xQryHXnFoSRKVPTBYH0LRpVWWnTZPOmgRO6yX6";
+        await ImageInfoExample.RunOne(apiKey, basePath);
+        await ImageInfoExample.RunTwo(apiKey, basePath);
+    }
 
-        if (res.IsSuccessful) {
-            console.log(JSON.parse(res.Content));
+    static async RunOne(apiKey, basePath) {
+        var imageResource = new ImageResource(basePath + "getting-started.png");
+        var imageInfo = new ImageInfo(imageResource);
+        imageInfo.ApiKey = apiKey;
+        var response = await imageInfo.Process();
+
+        if (response.IsSuccessful) {
+            console.log(JSON.parse(response.Content));
+        }
+    }
+
+    static async RunTwo(apiKey, basePath)
+    {
+        var imageResource = new ImageResource(basePath + "multipage.tiff");
+        var imageInfo = new ImageInfo(imageResource);
+        imageInfo.ApiKey = apiKey;
+        var response = await imageInfo.Process();
+        
+        if (response.IsSuccessful) {
+            console.log(JSON.parse(response.Content));
         }
     }
 }
+await ImageInfoExample.Run();
