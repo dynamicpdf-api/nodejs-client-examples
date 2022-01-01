@@ -9,7 +9,7 @@ export class CompletingAcroForm {
     static async Run() {
 
         var pdf = new Pdf();
-        pdf.ApiKey =  "DP.wsWB4gNqfaDmBSswJu4A+iFzKwZ20Uk7GferHVTNbdf3RaKRzjkHk5jb";
+        pdf.ApiKey =  "DP.xxx-api-key-xxx";
         pdf.AddPdf("samples/fill-acro-form-pdf-endpoint/fw9AcroForm_18.pdf");
 
         var formField = new FormField("topmostSubform[0].Page1[0].f1_1[0]", "Any Company, Inc.");

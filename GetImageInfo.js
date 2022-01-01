@@ -10,7 +10,7 @@ export class GetImageInfo {
         
         var imageResource = new ImageResource("C:/temp/dynamicpdf-api-samples/get-image-info/dynamicpdfLogo.png");
         var imageInfo = new ImageInfo(imageResource); 
-        imageInfo.ApiKey = "DP.NKSoPxiwOgZoypSVYaXyEARo2cO9Kk5BRgY2ZRC0jF/KQq4pDzhfK8yO";
+        imageInfo.ApiKey = "DP.xxx-api-key-xxx";
 
         var imageResponse = await imageInfo.Process();
 

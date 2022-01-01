@@ -11,7 +11,7 @@ export class CreatePdfDlex {
     static async Run() {
 
         var pdf = new Pdf();
-        pdf.ApiKey = "DP.F9KH87xzX6JFVE4YGbkLU4nvx7fbnjXOKIr7wPWYPRdaRJe7OlYQ+/cw";
+        pdf.ApiKey = "DP.xxx-api-key-xxx";
 
         var layoutDataResource = new LayoutDataResource("C:/temp/dynamicpdf-api-samples/create-pdf-dlex/SimpleReportWithCoverPage.json");
         pdf.AddDlex("samples/creating-pdf-pdf-endpoint/SimpleReportWithCoverPage.dlex", layoutDataResource);

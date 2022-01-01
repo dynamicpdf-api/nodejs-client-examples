@@ -1,9 +1,7 @@
 import fs from 'fs';
 import {
     Pdf,
-    PdfResource,
-    PdfInput,
-    Endpoint
+    PdfResource
 } from "@dynamicpdf/api"
 
 
@@ -22,7 +20,7 @@ export class MergePdfs {
         pdf.AddPdf("samples/merge-pdfs-pdf-endpoint/DocumentC.pdf");
         
 
-        pdf.ApiKey =  "DP.P6WqEDZ0vFA3I1wKj8VQj8HWDSEaH6vEMhRNg9QPbOSSQ5sGgN07u7fB";
+        pdf.ApiKey =  "DP.xxx--api-key---xxx";
         
         var res = await pdf.Process();
         

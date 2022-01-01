@@ -7,7 +7,7 @@ export class ImageInfoExample {
 
     static async Run() {
         var basePath = "C:/temp/dynamicpdf-api-usersguide-examples/";
-        var apiKey = "DP.TrJj2UBRFfrxiLYYD9xQryHXnFoSRKVPTBYH0LRpVWWnTZPOmgRO6yX6";
+        var apiKey = "DP.xxx--api-key--xxx";
         await ImageInfoExample.RunOne(apiKey, basePath);
         await ImageInfoExample.RunTwo(apiKey, basePath);
     }

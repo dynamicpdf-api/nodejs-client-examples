@@ -6,7 +6,7 @@ import {
 export class PdfInfoExample {
     static async Run() {
         var basePath = "C:/temp/dynamicpdf-api-usersguide-examples/";
-        var apiKey = "DP.TrJj2UBRFfrxiLYYD9xQryHXnFoSRKVPTBYH0LRpVWWnTZPOmgRO6yX6";
+        var apiKey = "DP.xxx--api-key--xxx";
         var resource = new PdfResource(basePath + "DocumentA.pdf");
         var pdfInfo = new PdfInfo(resource);
         pdfInfo.ApiKey = apiKey;

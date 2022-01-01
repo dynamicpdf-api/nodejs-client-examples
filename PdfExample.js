@@ -12,7 +12,7 @@ export class PdfExample {
     
     static async Run() {
         var basePath = "C:/temp/dynamicpdf-api-usersguide-examples/";
-        var apiKey = "DP.TrJj2UBRFfrxiLYYD9xQryHXnFoSRKVPTBYH0LRpVWWnTZPOmgRO6yX6";
+        var apiKey = "DP.xxx--api-key--xxx";
         var pdf = new Pdf();
         pdf.ApiKey = apiKey;
         var pageInput = pdf.AddPage(1008, 612);

@@ -8,7 +8,7 @@ export class CreatingPdfDlexLayout {
     static async Run() {
         var layoutData = new LayoutDataResource("C:/temp/dynamicpdf-api-samples/creating-pdf-dlex-layout-endpoint/create-pdf-dlex-layout.json");
         var dlexEndpoint = new DlexLayout("samples/creating-pdf-dlex-layout-endpoint/create-pdf-dlex-layout.dlex", layoutData);
-        dlexEndpoint.ApiKey = "DP.7vATWolKJ4xdaefbf/pTgSW7uGWofsZAKctZ1J/hzV9yTrzDvmDI1lwT";
+        dlexEndpoint.ApiKey = "DP.xxx-api-key-xxx";
         var res = await dlexEndpoint.Process();
         
         if (res.IsSuccessful) {

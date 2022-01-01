@@ -13,7 +13,7 @@ export class AddBookmarks {
     static async Run() {
 
         var pdf = new Pdf();
-        pdf.ApiKey = "DP.OxhJEc44gxTwzGkzRVJJ7Z+ijY9AbiF5E3CO87mwfEnvTrFoyWsRPv8R";
+        pdf.ApiKey = "DP.xxx-api-key-xxx";
 
         var resourceA = new PdfResource("c:/temp/dynamicpdf-api-samples/add-bookmarks/DocumentA.pdf");
         var resourceB = new PdfResource("c:/temp/dynamicpdf-api-samples/add-bookmarks/DocumentB.pdf");

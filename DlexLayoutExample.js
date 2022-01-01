@@ -8,7 +8,7 @@ export class DlexLayoutExample {
     static async Run() {
         var layoutData = new LayoutDataResource("C:/temp/dynamicpdf-api-samples/create-pdf-dlex/SimpleReportWithCoverPage.json");
         var dlexEndpoint = new DlexLayout("samples/dlex-layout/SimpleReportWithCoverPage.dlex", layoutData);
-        dlexEndpoint.ApiKey = "DP.TrJj2UBRFfrxiLYYD9xQryHXnFoSRKVPTBYH0LRpVWWnTZPOmgRO6yX6";
+        dlexEndpoint.ApiKey = "DP.xxx-api-key-xxx";
 
         var res = await dlexEndpoint.Process();
         

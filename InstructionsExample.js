@@ -20,7 +20,7 @@ export class InstructionsExample {
 
     static async Run() {
 
-    var apiKey = "DP.TrJj2UBRFfrxiLYYD9xQryHXnFoSRKVPTBYH0LRpVWWnTZPOmgRO6yX6";
+    var apiKey = "DP.xxx---api-key--xxx";
 	var basePath = "c:/temp/dynamicpdf-api-usersguide-examples/";
 
     await this.BarcodeExample(apiKey, basePath);
