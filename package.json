@@ -5,7 +5,7 @@
   "main": "Examples.js",
   "type": "module",
   "dependencies": {
-    "@dynamicpdf/api": "^0.x.x"
+    "@dynamicpdf/api": "^1.x.x"
   },
   "scripts": {
     "test": "node Examples.js"

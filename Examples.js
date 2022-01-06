@@ -16,8 +16,8 @@ async function RunExamples() {
     }
 
     try {
-        Endpoint.DefaultApiKey = testParams.ApiKey;
-        Endpoint.DefaultBaseUrl = testParams.BaseUrl;
+        Endpoint.defaultApiKey = testParams.ApiKey;
+        Endpoint.defaultBaseUrl = testParams.BaseUrl;
 
     /*    PrintDivider("Image Info (1)");
         await ImageInfoExample.ImageInfoExampleOne();

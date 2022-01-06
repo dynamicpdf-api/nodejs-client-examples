@@ -9,23 +9,23 @@ export class ImageInfoExample {
         var imageInfo = new ImageInfo(imageResource);
         imageInfo.Author = "ceTe Software";
         imageInfo.Title = "First Rest API";
-        var res = await imageInfo.Process();
-        if (res.IsSuccessful) {
-            console.log(JSON.parse(res.Content));
+        var res = await imageInfo.process();
+        if (res.isSuccessful) {
+            console.log(JSON.parse(res.content));
         }
     }
 
     static async ImageInfoExampleTwo() {
         var imageResource = new ImageResource("./Resources/client-libraries-examples/multipage.tiff");
         var imageInfo = new ImageInfo(imageResource);
-        imageInfo.Author = "ceTe Software";
-        imageInfo.Title = "First Rest API";
+        imageInfo.author = "ceTe Software";
+        imageInfo.title = "First Rest API";
         try {
-            var res = await imageInfo.Process();
+            var res = await imageInfo.process();
         }
         catch (e) { }
-        if (res.IsSuccessful) {
-            console.log(JSON.parse(res.Content));
+        if (res.isSuccessful) {
+            console.log(JSON.parse(res.content));
         }
     }
 }

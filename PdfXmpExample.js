@@ -8,10 +8,10 @@ export class PdfXmpExample {
         var resource = new PdfResource("./Resources/client-libraries-examples/fw4.pdf")
         var pdfXmp = new PdfXmp(resource);
 
-        var res = await pdfXmp.Process();
+        var res = await pdfXmp.process();
 
-        if (res.IsSuccessful) {
-            console.log(res.Content);
+        if (res.isSuccessful) {
+            console.log(res.content);
         }
     }
 }
