@@ -5,6 +5,8 @@ import {
     Endpoint
 } from "@dynamicpdf/api"
 
+// https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-xmp/tutorial-pdf-xmp
+
 export class GetXmpMetaData {
 
     static async Run() {

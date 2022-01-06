@@ -7,6 +7,8 @@ import {
 
 } from "@dynamicpdf/api"
 
+// https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-tutorial-dlex-pdf-endpoint
+
 export class CreatePdfDlex {
     static async Run() {
 

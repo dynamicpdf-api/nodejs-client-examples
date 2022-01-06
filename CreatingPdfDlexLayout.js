@@ -4,6 +4,8 @@ import {
     DlexLayout
 } from "@dynamicpdf/api"
 
+// https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/dlex-layout/tutorial-dlex-layout
+
 export class CreatingPdfDlexLayout {
     static async Run() {
         var layoutData = new LayoutDataResource("C:/temp/dynamicpdf-api-samples/creating-pdf-dlex-layout-endpoint/create-pdf-dlex-layout.json");

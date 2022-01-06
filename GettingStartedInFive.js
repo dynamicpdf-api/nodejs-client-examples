@@ -5,13 +5,14 @@ import {
     Endpoint
 } from "@dynamicpdf/api"
 
+// https://cloud.dynamicpdf.com/docs/getting-started
 
 export class GettingStartedInFive {
 
     static async Run() {
         var layoutData = new LayoutDataResource("C:/temp/dynamicpdf-api-samples/getting-started.json");
         var dlexEndpoint = new DlexLayout("samples/getting-started/getting-started.dlex", layoutData);
-        dlexEndpoint.ApiKey =  "DP.xxx-api-key-xxx";
+        dlexEndpoint.ApiKey =  "DP.TrJj2UBRFfrxiLYYD9xQryHXnFoSRKVPTBYH0LRpVWWnTZPOmgRO6yX6";
         
         var res = await dlexEndpoint.Process();
         

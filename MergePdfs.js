@@ -5,6 +5,8 @@ import {
 } from "@dynamicpdf/api"
 
 
+// https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-tutorial-merging-pdfs
+
 export class MergePdfs {
 
     static async Run() {

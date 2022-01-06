@@ -3,6 +3,8 @@ import {
     ImageInfo,
 } from "@dynamicpdf/api"
 
+// https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/image-info/tutorial-image-info
+
 export class ImageInfoExample {
 
     static async Run() {

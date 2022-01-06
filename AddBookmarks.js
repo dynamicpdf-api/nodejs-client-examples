@@ -8,6 +8,8 @@ import {
 } from "@dynamicpdf/api"
 import { Console } from 'console';
 
+// https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-tutorial-bookmarks
+
 export class AddBookmarks {
 
     static async Run() {

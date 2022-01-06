@@ -4,6 +4,8 @@ import {
     ImageResponse
 } from "@dynamicpdf/api"
 
+// https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/image-info/tutorial-image-info
+
 export class GetImageInfo {
     static async Run() {
 
