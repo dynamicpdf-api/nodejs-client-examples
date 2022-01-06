@@ -11,10 +11,10 @@ export class PdfXmpExample {
         var pdfXmp = new PdfXmp(resource);
         pdfXmp.ApiKey = apiKey;
 
-        var res = await pdfXmp.Process();
+        var res = await pdfXmp.process();
 
-        if (res.IsSuccessful) {
-            console.log(res.Content);
+        if (res.isSuccessful) {
+            console.log(res.content);
         }
     }
 }
