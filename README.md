@@ -30,3 +30,19 @@ For more information on the tutorials and example code, refer to:
 
 - https://cloud.dynamicpdf.com/docs/tutorials/tutorials-overview
 - https://cloud.dynamicpdf.com/docs/usersguide/cloud-api/cloud-api-overview
+
+## **Tutorials**
+
+The following table lists the tutorial project or file name.  In Visual Studio each tutorial is it's own project. In the remaining client libraries each tutorial is its own individual class.
+
+| Tutorial Title                                      | Project/File/Class      | Tutorial Location                                            |
+| --------------------------------------------------- | ----------------------- | ------------------------------------------------------------ |
+| Getting Started in 5 Minutes                        | `GettingStartedInFive`  | https://cloud.dynamicpdf.com/docs/tutorials/getting-started/getting-started-5-min |
+| Completing a Form using the `pdf` Endpoint          | `CompletingAcroForm`    | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-tutorial-form-completion |
+| Creating a PDF Using a DLEX and the `pdf` Endpoint  | `CreatingPdfDlex`       | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-tutorial-dlex-merge |
+| Adding Bookmarks to a PDF                           | `AddBookmarks`          | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-tutorial-outlines |
+| Creating a PDF Using the `dlex-layout` Endpoint     | `CreatingPdfDlexLayout` | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/dlex-layout/tutorial-dlex-layout |
+| Extracting Metadata Using the `image-info` Endpoint | `GetImageInfo`          | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/image-info/tutorial-image-info |
+| Extract PDF Metadata Using the `pdf-info` Endpoint  | `GetPdfInfo`            | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-info/tutorial-pdf-info |
+| Extracting Text Using the `pdf-text` Endpoint       | `ExtractingText`        | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-text/tutorial-pdf-text |
+| Extract XMP Metadata Using the `pdf-xmp` Endpoint   | `GetXmpMetaData`        | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-xmp/tutorial-pdf-xmp |
