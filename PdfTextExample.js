@@ -5,11 +5,15 @@ import {
 
 export class PdfTextExample {
     static async Run() {
-        var resource = new PdfResource("Resources/client-libraries-examples/fw4.pdf");
+        var basePath = "C:/temp/dynamicpdf-api-usersguide-examples/";
+        var apiKey = "DP.xxx--api-key--xxx";
+        var resource = new PdfResource(basePath + "fw4.pdf");
         var pdfText = new PdfText(resource);
-        var res = await pdfText.process();
-        if (res.isSuccessful) {
-            console.log(JSON.parse(res.content));
+        pdfText.ApiKey = apiKey;
+        var res = await pdfText.Process();
+        if (res.IsSuccessful) {
+            console.log(JSON.parse(res.Content));
         }
     }
 }
+await PdfTextExample.Run();

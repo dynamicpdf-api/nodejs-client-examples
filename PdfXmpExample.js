@@ -5,8 +5,11 @@ import {
 
 export class PdfXmpExample {
     static async Run() {
-        var resource = new PdfResource("./Resources/client-libraries-examples/fw4.pdf")
+        var basePath = "C:/temp/dynamicpdf-api-usersguide-examples/";
+        var apiKey = "DP.xxx--api-key--xxx";
+        var resource = new PdfResource(basePath + "fw4.pdf")
         var pdfXmp = new PdfXmp(resource);
+        pdfXmp.ApiKey = apiKey;
 
         var res = await pdfXmp.process();
 
@@ -15,3 +18,4 @@ export class PdfXmpExample {
         }
     }
 }
+await PdfXmpExample.Run();

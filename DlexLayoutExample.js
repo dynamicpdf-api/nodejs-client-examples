@@ -6,20 +6,20 @@ import {
 
 export class DlexLayoutExample {
     static async Run() {
-        var layoutData = new LayoutDataResource("./Resources/client-libraries-examples/AllReportElementsData.json");
-        var dlexEndpoint = new DlexLayout("AllReportElements.dlex", layoutData);
+        var layoutData = new LayoutDataResource("C:/temp/dynamicpdf-api-samples/create-pdf-dlex/SimpleReportWithCoverPage.json");
+        var dlexEndpoint = new DlexLayout("samples/dlex-layout/SimpleReportWithCoverPage.dlex", layoutData);
+        dlexEndpoint.ApiKey = "DP.xxx-api-key-xxx";
 
-        dlexEndpoint.author = "ceTe Software";
-        dlexEndpoint.title = "First Rest API";
-        var res = await dlexEndpoint.process();
-        if (res.isSuccessful) {
-            var outFile = "./output/dlex-output.pdf";
+        var res = await dlexEndpoint.Process();
+        
+        if (res.IsSuccessful) {
+            var outFile = "C:/temp/dynamicpdf-api-samples/create-pdf-dlex/nodejs-dlex-layout-example-output.pdf";
             var outStream = fs.createWriteStream(outFile);
-            outStream.write(res.content);
+            outStream.write(res.Content);
             outStream.close();
-            console.log("Pdf was generated and saved at: " + outFile);
         } else {
-            console.log(PrettyPrintUtil.JsonPrettify(response.errorJson));
+            console.log(PrettyPrintUtil.JsonPrettify(response.ErrorJson));
         }
     }
 }
+await DlexLayoutExample.Run();
