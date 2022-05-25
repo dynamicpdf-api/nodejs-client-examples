@@ -9,10 +9,10 @@ export class PdfInfoExample {
         var apiKey = "DP.xxx--api-key--xxx";
         var resource = new PdfResource(basePath + "DocumentA.pdf");
         var pdfInfo = new PdfInfo(resource);
-        pdfInfo.ApiKey = apiKey;
-        var res = await pdfInfo.Process();
-        if (res.IsSuccessful) {
-            console.log(JSON.parse(res.Content));
+        pdfInfo.apiKey = apiKey;
+        var res = await pdfInfo.process();
+        if (res.isSuccessful) {
+            console.log(JSON.parse(res.content));
         }
     }
 }

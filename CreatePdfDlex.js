@@ -13,23 +13,20 @@ export class CreatePdfDlex {
     static async Run() {
 
         var pdf = new Pdf();
-        pdf.ApiKey = "DP.xxx-api-key-xxx";
+        pdf.apiKey = "DP.S24WDZzwg9qgRqzVhZIO1Ff68jHbjoJKezkxnMv+U5C2RK0sHXhWG8KS";
 
         var layoutDataResource = new LayoutDataResource("C:/temp/dynamicpdf-api-samples/create-pdf-dlex/SimpleReportWithCoverPage.json");
-        pdf.AddDlex("samples/creating-pdf-pdf-endpoint/SimpleReportWithCoverPage.dlex", layoutDataResource);
-        
-        var pdfResource = new PdfResource("C:/temp/dynamicpdf-api-samples/create-pdf-dlex/DocumentA.pdf");
-        pdf.AddPdf(pdfResource);
+        pdf.addDlex("samples/creating-pdf-pdf-endpoint/SimpleReportWithCoverPage.dlex", layoutDataResource);
 
-        var res = await pdf.Process();
+        var res = await pdf.process();
 
-        if (res.IsSuccessful) {
-            var outFile = "C:/temp/dynamicpdf-api-samples/create-pdf-dlex/create-pdf-dlex-output.pdf";
+        if (res.isSuccessful) {
+            var outFile = "C:/temp/dynamicpdf-api-samples/create-pdf-dlex/create-pdf-dlex-output_nodejs.pdf";
             var outStream = fs.createWriteStream(outFile);
-            outStream.write(res.Content);
+            outStream.write(res.content);
             outStream.close();
         } else {
-            console.log(res.ErrorJson);
+            console.log(res.errorJson);
         }
     }
 }

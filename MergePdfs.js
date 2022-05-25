@@ -12,17 +12,17 @@ export class MergePdfs {
     static async Run() {
               
         var pdf = new Pdf();
-        var pdfInput = pdf.AddPdf(new PdfResource("C:/temp/dynamicpdf-api-samples/DocumentA.pdf"));
-        pdfInput.StartPage = 1;
-        pdfInput.PageCount = 1;
+        var pdfInput = pdf.addPdf(new PdfResource("C:/temp/dynamicpdf-api-samples/DocumentA.pdf"));
+        pdfInput.startPage = 1;
+        pdfInput.pageCount = 1;
 
-        pdf.AddPdf(new PdfResource("C:/temp/dynamicpdf-api-samples/DocumentB.pdf"));
+        pdf.addPdf(new PdfResource("C:/temp/dynamicpdf-api-samples/DocumentB.pdf"));
 
 
-        pdf.AddPdf("samples/merge-pdfs-pdf-endpoint/DocumentC.pdf");
+        pdf.addPdf("samples/merge-pdfs-pdf-endpoint/DocumentC.pdf");
         
 
-        pdf.ApiKey =  "DP.xxx--api-key---xxx";
+        pdf.apiKey =  "DP.xxx--api-key---xxx";
         
         var res = await pdf.Process();
         
