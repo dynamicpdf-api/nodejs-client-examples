@@ -22,7 +22,7 @@ export class MergePdfs {
         pdf.addPdf("samples/merge-pdfs-pdf-endpoint/DocumentC.pdf");
         
 
-        pdf.apiKey =  "DP.xxx--api-key---xxx";
+        pdf.apiKey =  "DP.S24WDZzwg9qgRqzVhZIO1Ff68jHbjoJKezkxnMv+U5C2RK0sHXhWG8KS";
         
         var res = await pdf.Process();
         
