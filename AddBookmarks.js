@@ -3,7 +3,6 @@ import {
     Pdf,
     PdfResource,
     RgbColor,
-    Outline,
     UrlAction
 } from "@dynamicpdf/api"
 import { Console } from 'console';
@@ -15,44 +14,45 @@ export class AddBookmarks {
     static async Run() {
 
         var pdf = new Pdf();
-        pdf.ApiKey = "DP.xxx-api-key-xxx";
+        pdf.apiKey = "DP.Y0hWTIaVHr2dmKjGcfAQe1S4px4ZaBcnjIALid4zOUt1TZDepDH3uRv0";
 
         var resourceA = new PdfResource("c:/temp/dynamicpdf-api-samples/add-bookmarks/DocumentA.pdf");
         var resourceB = new PdfResource("c:/temp/dynamicpdf-api-samples/add-bookmarks/DocumentB.pdf");
         var resourceC = new PdfResource("c:/temp/dynamicpdf-api-samples/add-bookmarks/DocumentC.pdf");
 
-        var inputA = pdf.AddPdf(resourceA);
+        var inputA = pdf.addPdf(resourceA);
         inputA.Id = "DocumentA";
 
-        var inputB = pdf.AddPdf(resourceB);
+        var inputB = pdf.addPdf(resourceB);
         inputB.Id = "DocumentB";
 
-        var inputC = pdf.AddPdf(resourceC);
+        var inputC = pdf.addPdf(resourceC);
         inputC.Id = "DocumentC";
 
-        var rootOutline = pdf.Outlines.Add("Three Bookmarks");
-        rootOutline.Expanded = true;
+        var rootOutline = pdf.outlines.add("Three Bookmarks");
+        rootOutline.expanded = true;
 
-        var childOutlineA = rootOutline.Children.Add("DocumentA", inputA);
-        var childOutlineB = rootOutline.Children.Add("DocumentB", inputB, 2);
-        var childOutlineC = rootOutline.Children.Add("DocumentC", inputC);
+        var childOutlineA = rootOutline.children.add("DocumentA", inputA);
+        var childOutlineB = rootOutline.children.add("DocumentB", inputB, 2);
+        var childOutlineC = rootOutline.children.add("DocumentC", inputC);
 
-        childOutlineA.Color = RgbColor.Red;
-        childOutlineB.Color = RgbColor.Orange;
-        childOutlineC.Color = RgbColor.Green;
+        childOutlineA.color = RgbColor.red;
+        childOutlineB.color = RgbColor.orange;
+        childOutlineC.color = RgbColor.green;
 
-        var outlineD = rootOutline.Children.Add("DynamicPDF Cloud API");
-        outlineD.Color = RgbColor.Blue;
-        outlineD.Action = new UrlAction("https://cloud.dynamicpdf.com/");
+        var outlineD = rootOutline.children.add("DynamicPDF Cloud API");
+        outlineD.color = RgbColor.blue;
+        outlineD.action = new UrlAction("https://cloud.dynamicpdf.com/");
 
-        var res = await pdf.Process();
+        var res = await pdf.process();
 
-        if (res.IsSuccessful) {
-            var outFile = "c:/temp/dynamicpdf-api-samples/add-bookmarks/add-bookmarks-output.pdf";
+        if (res.isSuccessful) {
+            var outFile = "c:/temp/dynamicpdf-api-samples/add-bookmarks/add-bookmarks-javascript-output.pdf";
             var outStream = fs.createWriteStream(outFile);
-            outStream.write(res.Content);
+            outStream.write(res.content);
+            outStream.close();
         } else {
-            console.log(res.ErrorJson);
+            console.log(res.errorJson);
         }
     }
 }

@@ -9,7 +9,7 @@ export class PdfXmpExample {
         var apiKey = "DP.xxx--api-key--xxx";
         var resource = new PdfResource(basePath + "fw4.pdf")
         var pdfXmp = new PdfXmp(resource);
-        pdfXmp.ApiKey = apiKey;
+        pdfXmp.apiKey = apiKey;
 
         var res = await pdfXmp.process();
 
