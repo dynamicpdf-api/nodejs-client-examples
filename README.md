@@ -8,7 +8,7 @@ The project contains numerous sample projects for the tutorials and examples on 
 Running Examples
 ----------------
 
-In order to install NodeJS client for DynamicPdf Cloud, run this:
+In order to install NodeJS client for DynamicPdf Cloud, run the following command.
 
 ```bash
 npm update
