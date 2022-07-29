@@ -3,7 +3,7 @@
 nodejs-client-examples 
 =========================================
 
-The Node.js Client Examples (`nodejs-client-examples`) project uses the DynamicPDF Cloud API Node.js client library to create, merge, split, form fill, stamp, obtain metadata, convert, and secure/encrypt PDF documents.  This project contains numerous sample projects for the tutorials and examples at the [DynamicPDF Cloud API](https://cloud.dynamicpdf.com/) website.
+The Node.js Client Examples (`nodejs-client-examples`) project provides examples using the DynamicPDF Cloud API Node.js client library. This project contains numerous sample projects for the tutorials and examples at the [DynamicPDF Cloud API](https://cloud.dynamicpdf.com/) website.
 
 The DynamicPDF Cloud API consists of the following endpoints.
 
@@ -19,13 +19,15 @@ For more information, please visit [DynamicPDF Cloud API](https://cloud.dynamicp
 Running Examples
 ----------------
 
-In order to install NodeJS client for DynamicPdf Cloud, run the following command.
+To install the `nodejs-client-examples` for the DynamicPDF Cloud API, run the following commands.
 
 ```bash
-npm update
+$ cd ./nodejs-client-examples
+$ npm link nodejs-client-examples
+$ npm install
 ```
 
-This will install the client package. Each node.js class runs independently.  Run any of the provided classes as follows.
+Each node.js file runs independently.  Run any of the provided classes as follows.
 
 ```bash
 node <filename>.js
@@ -46,17 +48,17 @@ For more information on the tutorials and example code, refer to:
 
 The following table lists the tutorial project or file name.  In Visual Studio each tutorial is it's own project. In the remaining client libraries each tutorial is its own individual class. 
 
-| Tutorial Title                                     | Project/File/Class      | Tutorial Location                                            |
-| -------------------------------------------------- | ----------------------- | ------------------------------------------------------------ |
-| Merging PDFs                                       | MergePdfs               | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/merging-pdfs |
-| Completing an AcroForm                             | `CompletingAcroForm`    | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/form-completion |
-| Creating a PDF Using a DLEX and the `pdf` Endpoint | `CreatingPdfDlex`       | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/dlex-pdf-endpoint |
-| Adding Bookmarks to a PDF                          | `AddBookmarks`          | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/bookmarks |
-| Creating a PDF Using the `dlex-layout` Endpoint    | `CreatingPdfDlexLayout` | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/dlex-layout |
-| Extracting Image Metadata                          | `GetImageInfo`          | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/image-info |
-| Extract PDF Metadata                               | `GetPdfInfo`            | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-info |
-| Extracting PDF's Text                              | `ExtractingText`        | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-text |
-| Extract XMP Metadata                               | `GetXmpMetaData`        | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-xmp |
+| Tutorial Title                                     | Tutorial Location                                            |
+| -------------------------------------------------- | ------------------------------------------------------------ |
+| Merging PDFs                                       | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/merging-pdfs |
+| Completing an AcroForm                             | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/form-completion |
+| Creating a PDF Using a DLEX and the `pdf` Endpoint | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/dlex-pdf-endpoint |
+| Adding Bookmarks to a PDF                          | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/bookmarks |
+| Creating a PDF Using the `dlex-layout` Endpoint    | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/dlex-layout |
+| Extracting Image Metadata                          | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/image-info |
+| Extract PDF Metadata                               | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-info |
+| Extracting PDF's Text                              | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-text |
+| Extract XMP Metadata                               | https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-xmp |
 
 # Support
 
