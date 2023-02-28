@@ -13,7 +13,7 @@ export class CreatePdfDlex {
     static async Run() {
 
         var pdf = new Pdf();
-        pdf.apiKey = "DP.S24WDZzwg9qgRqzVhZIO1Ff68jHbjoJKezkxnMv+U5C2RK0sHXhWG8KS";
+        pdf.apiKey = "DP<API-KEY>";
 
         var layoutDataResource = new LayoutDataResource("C:/temp/dynamicpdf-api-samples/create-pdf-dlex/SimpleReportWithCoverPage.json");
         pdf.addDlex("samples/creating-pdf-pdf-endpoint/SimpleReportWithCoverPage.dlex", layoutDataResource);
