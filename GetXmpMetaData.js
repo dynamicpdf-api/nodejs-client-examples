@@ -12,14 +12,14 @@ export class GetXmpMetaData {
     static async Run() {
         var resource = new PdfResource("C:/temp/dynamicpdf-api-samples/get-xmp-metadata/fw4.pdf")
         var pdfXmp = new PdfXmp(resource);
-        pdfXmp.ApiKey = "DP.xxx-api-key-xxx";
+        pdfXmp.apiKey = "DP.xxx-api-key-xxx";
 
-        var res = await pdfXmp.Process();
+        var res = await pdfXmp.process();
 
-        if (res.IsSuccessful) {
-            console.log(res.Content);
+        if (res.isSuccessful) {
+            console.log(res.content);
         } else {
-            console.log(res.ErrorJson);
+            console.log(res.errorJson);
         }
     }
 }

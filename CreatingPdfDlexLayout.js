@@ -8,18 +8,18 @@ import {
 
 export class CreatingPdfDlexLayout {
     static async Run() {
-        var layoutData = new LayoutDataResource("C:/temp/dynamicpdf-api-samples/creating-pdf-dlex-layout-endpoint/create-pdf-dlex-layout.json");
-        var dlexEndpoint = new DlexLayout("samples/creating-pdf-dlex-layout-endpoint/create-pdf-dlex-layout.dlex", layoutData);
-        dlexEndpoint.ApiKey = "DP.xxx-api-key-xxx";
-        var res = await dlexEndpoint.Process();
+        var layoutData = new LayoutDataResource("C:/temp/dynamicpdf-api-samples/creating-pdf-dlex-layout-endpoint/creating-pdf-dlex-layout.");
+        var dlexEndpoint = new DlexLayout("samples/creating-pdf-dlex-layout-endpoint/creating-pdf-dlex-layout.dlex", layoutData);
+        dlexEndpoint.apiKey = "DP.xxx-api-key-xxx";
+        var res = await dlexEndpoint.process();
         
-        if (res.IsSuccessful) {
-            var outFile = "C:/temp/dynamicpdf-api-samples/creating-pdf-dlex-layout-endpoint/create-pdf-dlex-output.pdf";
+        if (res.isSuccessful) {
+            var outFile = "C:/temp/dynamicpdf-api-samples/creating-pdf-dlex-layout-endpoint/create-pdf-dlex-output-nodejs.pdf";
             var outStream = fs.createWriteStream(outFile);
-            outStream.write(res.Content);
+            outStream.write(res.content);
             outStream.close();
         } else {
-            console.log(response.ErrorJson);
+            console.log(response.errorJson);
         }
     }
 }

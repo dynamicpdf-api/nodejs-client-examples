@@ -9,14 +9,14 @@ export class ExtractText {
     static async Run() {
         var resource = new PdfResource("C:/temp/dynamicpdf-api-samples/extract-text/fw4.pdf");
         var pdfText = new PdfText(resource);
-        pdfText.ApiKey = "DP.xxx-api-key-xxx";
-        pdfText.StartPage = 1;
-        pdfText.PageCount = 2;
-        var res = await pdfText.Process();
-        if (res.IsSuccessful) {
-            console.log(JSON.parse(res.Content));
+        pdfText.apiKey = "DP.xxx-api-key-xxx";
+        pdfText.startPage = 1;
+        pdfText.pageCount = 2;
+        var res = await pdfText.process();
+        if (res.isSuccessful) {
+            console.log(JSON.parse(res.content));
         } else {
-            console.log(res.ErrorJson);
+            console.log(res.errorJson);
         }
     }
 }

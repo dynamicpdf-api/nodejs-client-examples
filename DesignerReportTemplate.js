@@ -8,7 +8,7 @@ export class DesignerReportTemplate {
     static async Run() {
         var layoutData = new LayoutDataResource("C:/temp/dynamicpdf-api-samples/using-dlex-layout/invoice-local.json");
         var dlexEndpoint = new DlexLayout("samples/creating-a-report-template-designer/invoice.dlex", layoutData);
-        dlexEndpoint.apiKey = "DP<API-KEY>";
+        dlexEndpoint.apiKey = "DP.xxx-api-key-xxx";
 
         var res = await dlexEndpoint.process();
         
