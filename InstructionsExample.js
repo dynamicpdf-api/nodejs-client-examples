@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import {
     Pdf,
     PdfResource,
@@ -26,7 +26,7 @@ export class InstructionsExample {
     await this.BarcodeExample(apiKey, basePath);
     await this.TemplateExample(apiKey, basePath);
     await this.TopLevelMetaData(apiKey, basePath);
-    //await this.FontsExample(apiKey, basePath);
+    await this.FontsExample(apiKey, basePath);
     await this.SecurityExample(apiKey, basePath);
     await this.MergeExample(apiKey, basePath);
     await this.FormFieldsExample(apiKey, basePath);
