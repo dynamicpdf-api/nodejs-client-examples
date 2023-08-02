@@ -11,8 +11,8 @@ export class CompletingAcroForm {
     static async Run() {
 
         var pdf = new Pdf();
-        pdf.ApiKey =  "DP.xxx-api-key-xxx";
-        pdf.AddPdf("samples/fill-acro-form-pdf-endpoint/fw9AcroForm_18.pdf");
+        pdf.apiKey =  "DP.xxx-api-key-xxx";
+        pdf.addPdf("samples/fill-acro-form-pdf-endpoint/fw9AcroForm_18.pdf");
 
         var formField = new FormField("topmostSubform[0].Page1[0].f1_1[0]", "Any Company, Inc.");
         var formField2 = new FormField("topmostSubform[0].Page1[0].f1_2[0]", "Any Company");
@@ -23,27 +23,27 @@ export class CompletingAcroForm {
         var formField7 = new FormField("topmostSubform[0].Page1[0].f1_10[0]", "17288825617");
         var formField8 = new FormField("topmostSubform[0].Page1[0].EmployerID[0].f1_14[0]", "52");
         var formField9 = new FormField("topmostSubform[0].Page1[0].EmployerID[0].f1_15[0]", "1234567");
-        pdf.FormFields.push(formField);
-        pdf.FormFields.push(formField2);
-        pdf.FormFields.push(formField3);
-        pdf.FormFields.push(formField4);
-        pdf.FormFields.push(formField5);
-        pdf.FormFields.push(formField6);
-        pdf.FormFields.push(formField7);
-        pdf.FormFields.push(formField8);
-        pdf.FormFields.push(formField9);
+        pdf.formFields.push(formField);
+        pdf.formFields.push(formField2);
+        pdf.formFields.push(formField3);
+        pdf.formFields.push(formField4);
+        pdf.formFields.push(formField5);
+        pdf.formFields.push(formField6);
+        pdf.formFields.push(formField7);
+        pdf.formFields.push(formField8);
+        pdf.formFields.push(formField9);
 
-        var res = await pdf.Process();
+        var res = await pdf.process();
         
-        if (res.IsSuccessful) {
-            var outFile = "C:/temp/dynamicpdf-api-samples/fill-acro-form/fill-acro-form-output.pdf";
+        if (res.isSuccessful) {
+            var outFile = "C:/temp/dynamicpdf-api-samples/fill-acro-form/fill-acro-form-nodejs-output.pdf";
             var outStream = fs.createWriteStream(outFile);
-            outStream.write(res.Content);
+            outStream.write(res.content);
             outStream.close();
             console.log("Pdf was generated and saved at: ", outFile);
         }
         else {
-            console.log(res.ErrorJson);
+            console.log(res.errorJson);
         }
     }
 }

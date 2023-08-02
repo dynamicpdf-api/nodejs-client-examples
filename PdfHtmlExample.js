@@ -1,38 +1,34 @@
 import fs from 'fs';
-
 import {
-  Pdf,
-  PageSize,
-  Orientation,
-  HtmlResource
+    Pdf,
+    HtmlResource
 } from "@dynamicpdf/api"
+import { Console } from 'console';
+
+// https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-tutorial-bookmarks
 
 export class PdfHtmlExample {
-    
     static async Run() {
+        var basePath = "c:/temp/dynamicpdf-api-samples/html-pdf/";
+        var pdf = new Pdf();
+        pdf.apiKey =  "DP.xxx-api-key-xxx";
+        pdf.addHtml("<html><p>This is a test.</p></html>")
+        var resource = new HtmlResource(basePath + "HtmlWithAllTags.html");
+        pdf.addHtml(resource);
+
+        pdf.addHtml("<html><img src='./images/logo.png'></img></html>", "https://www.dynamicpdf.com");
         
-       var savePath = "c:/temp/html-to-pdf/html-output.pdf";
-       var apiKey = "DP.EBoj8OwntzCD2sKVWHiH09v3n+OWtR+vkwPxjmxQ53bwRr5nCnbznASo";
-       var pdf = new Pdf();
-       pdf.apiKey = apiKey;
-
-        //var resource = new HtmlResource("<html>hello</html>");
-
-        pdf.addHtml("<html>hello</html>", null, 
-        PageSize.LETTER, Orientation.PORTRAIT, 1);
-
-        pdf.addHtml(new HtmlResource("<html><p>HTML with basePath.</p><img src='./images/logo.png'></img></html>"),
-        "https://www.dynamicpdf.com", PageSize.LETTER, Orientation.PORTRAIT, 1);
-
-        var resourcePath = "c:/temp/html-to-pdf/products.html";
-        pdf.addHtml(new HtmlResource(resourcePath), null, PageSize.LETTER, Orientation.PORTRAIT, 1);
-
         var res = await pdf.process();
+    
         if (res.isSuccessful) {
-            var outStream = fs.createWriteStream(savePath);
+            var outFile = basePath + "html-output-nodejs.pdf";
+            var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();
+        } else {
+                console.log(res.errorJson);
         }
     }
 }
+        
 await PdfHtmlExample.Run();

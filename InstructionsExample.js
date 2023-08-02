@@ -1,40 +1,37 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import {
     Pdf,
     PdfResource,
     PdfInput,
     PageNumberingElement,
+    elementPlacement,
     RgbColor,
     Font,
     Aes256Security,
+    ImageResponse,
     ImageResource,
     FormField,
     Template,
     TextElement,
-    AztecBarcodeElement,
-    DlexResource,
-    LayoutDataResource,
-    elementPlacement
+    AztecBarcodeElement
 } from "@dynamicpdf/api"
 
 export class InstructionsExample {
 
     static async Run() {
 
-    var apiKey = "DP.tlfNvFa4Rdx1CX73eomqeD2w5dG/xb2OyUHI8VMLxzFtSY6B7GgF3QGS";
-	var basePath = "c:/temp/dynamicpdf-api-samples/out/";
+    var apiKey = "DP.xxx-api-key-xxx";
+	var basePath = "c:/temp/dynamicpdf-api-usersguide-examples/";
 
-   // await this.BarcodeExample(apiKey, basePath);
-   // await this.TemplateExample(apiKey, basePath);
-   // await this.TopLevelMetaData(apiKey, basePath);
-   // await this.FontsExample(apiKey, basePath);
-   // await this.SecurityExample(apiKey, basePath);
-   // await this.MergeExample(apiKey, basePath);
-   // await this.FormFieldsExample(apiKey, basePath);
-   // await this.AddOutlinesExistingPdf(apiKey, basePath);
-   // await this.AddOutlinesForNewPdf(apiKey, basePath);
-    await this.DlexResourceExample(apiKey, basePath);
-    await this.DlexResourceStreamExample(apiKey, basePath);
+    await this.BarcodeExample(apiKey, basePath);
+    await this.TemplateExample(apiKey, basePath);
+    await this.TopLevelMetaData(apiKey, basePath);
+    await this.FontsExample(apiKey, basePath);
+    await this.SecurityExample(apiKey, basePath);
+    await this.MergeExample(apiKey, basePath);
+    await this.FormFieldsExample(apiKey, basePath);
+    await this.AddOutlinesExistingPdf(apiKey, basePath);
+    await this.AddOutlinesForNewPdf(apiKey, basePath);
 
     }
 
@@ -47,29 +44,6 @@ export class InstructionsExample {
             outStream.write(res.content);
             outStream.close();
         }
-    }
-
-     static async DlexResourceStreamExample(apiKey, basePath) {
-
-        var pdf = new Pdf();
-
-        var dlexStream = fs.readFileSync("c:/temp/dlex-resource/SimpleReportWithCoverPage.dlex", "utf8");
-
-        var dlex = new DlexResource(dlexStream);
-        var layout = new LayoutDataResource("c:/temp/dlex-resource/SimpleReportWithCoverPage.json");
-        pdf.addDlex(dlex, layout);
-        await this.ProcessAndSave(pdf, apiKey, basePath, "dlex-resource-stream-nodejs.pdf");
-    }
-
-
-    static async DlexResourceExample(apiKey, basePath) {
-
-        var pdf = new Pdf();
-        var dlex = new DlexResource("c:/temp/dlex-resource/SimpleReportWithCoverPage.dlex");
-        var layout = new LayoutDataResource("c:/temp/dlex-resource/SimpleReportWithCoverPage.json");
-        pdf.addDlex(dlex, layout);
-        await this.ProcessAndSave(pdf, apiKey, basePath, "dlex-resource-nodejs.pdf");
-        
     }
 
     static async TopLevelMetaData(apiKey, basePath) {
@@ -86,19 +60,19 @@ export class InstructionsExample {
     static async FontsExample(apiKey, basePath) {
         var pdf = new Pdf();
         var pageInput = pdf.addPage(1008, 612);
-        var pageNumberingElement = new PageNumberingElement("A", elementPlacement.TOPRIGHT);
+        var pageNumberingElement = new PageNumberingElement("A", elementPlacement.topRight);
         pageNumberingElement.color = RgbColor.red;
         pageNumberingElement.font = Font.helvetica;
         pageNumberingElement.fontSize = 42;
     
         var cloudResourceName = "old_samples/shared/font/Calibri.otf";
-        var pageNumberingElementTwo = new PageNumberingElement("B", elementPlacement.TOPLEFT);
+        var pageNumberingElementTwo = new PageNumberingElement("B", elementPlacement.topLeft);
         pageNumberingElementTwo.color = RgbColor.darkOrange;
         pageNumberingElementTwo.font = new Font(cloudResourceName);
         pageNumberingElementTwo.fontSize = 32;
         
         var filePathFont = basePath + "cnr.otf";
-        var pageNumberingElementThree = new PageNumberingElement("C", elementPlacement.TOPCENTER);
+        var pageNumberingElementThree = new PageNumberingElement("C", elementPlacement.topCenter);
         pageNumberingElementThree.color = RgbColor.green;
         pageNumberingElementThree.font = Font.fromFile(filePathFont);
         pageNumberingElementThree.fontSize = 42;
@@ -116,7 +90,7 @@ export class InstructionsExample {
         var passWord = "mypassword";
         var pdf = new Pdf();
         var pdfResource = new PdfResource(fileResource);
-        pdf.AddPdf(pdfResource);
+        pdf.addPdf(pdfResource);
         var sec = new Aes256Security(userName, passWord);
         sec.allowCopy = false;
         sec.allowPrint = false;
@@ -139,6 +113,7 @@ export class InstructionsExample {
         var pdf = new Pdf();
         pdf.addPdf(new PdfResource(basePath + "simple-form-fill.pdf"));
 
+
         var formField = new FormField("nameField", "DynamicPdf");
         var formField2 = new FormField("descriptionField", "RealTime Pdf's. Real FAST!");
 
@@ -151,8 +126,8 @@ export class InstructionsExample {
     static async AddOutlinesExistingPdf(apiKey, basePath) {
 
         var pdf = new Pdf();
-        pdf.author = "John Doe";
-        pdf.title = "Existing Pdf Example";
+        pdf.Author = "John Doe";
+        pdf.Title = "Existing Pdf Example";
 
         var resource = new PdfResource(basePath + "AllPageElements.pdf");
         var input = pdf.addPdf(resource);
@@ -162,11 +137,11 @@ export class InstructionsExample {
         var input1 = pdf.addPdf(resource1);
         input1.Id = "outlineDoc1";
      
-        var rootOutline = pdf.Outlines.add("Imported Outline");
+        var rootOutline = pdf.outlines.add("Imported Outline");
         rootOutline.expanded = true;
 
-        rootOutline.Children.addPdfOutlines(input);
-        rootOutline.Children.addPdfOutlines(input1);
+        rootOutline.children.addPdfOutlines(input);
+        rootOutline.children.addPdfOutlines(input1);
 
         await this.ProcessAndSave(pdf, apiKey, basePath, "json-AddOutlinesExisting-output.pdf");
     }
@@ -174,8 +149,8 @@ export class InstructionsExample {
     static async AddOutlinesForNewPdf(apiKey, basePath) {
 
         var pdf = new Pdf();
-        pdf.author = "John Doe";
-        pdf.title = "Sample Pdf";
+        pdf.Author = "John Doe";
+        pdf.Title = "Sample Pdf";
 
         var pageInput = pdf.addPage();
         var element = new TextElement("Hello World 1", elementPlacement.topCenter);
@@ -187,7 +162,7 @@ export class InstructionsExample {
 
         var pageInput2 = pdf.addPage();
         var element2 = new TextElement("Hello World 3", elementPlacement.topCenter);
-        pageInput2.Elements.push(element2);
+        pageInput2.elements.push(element2);
 
         var rootOutline = pdf.outlines.add("Root Outline");
 
@@ -200,8 +175,8 @@ export class InstructionsExample {
 
     static async TemplateExample(apiKey, basePath) {
         var pdf = new Pdf();
-        pdf.author = "John User";
-        pdf.title = "Template Example One";
+        pdf.Author = "John User";
+        pdf.Title = "Template Example One";
         var resource = new PdfResource(basePath + "DocumentA.pdf");
         var input = new PdfInput(resource);
         pdf.inputs.push(input);
@@ -217,8 +192,8 @@ export class InstructionsExample {
     static async BarcodeExample(apiKey, basePath) {
 
         var pdf = new Pdf();
-        pdf.author = "John Doe";
-        pdf.title = "Barcode Example";
+        pdf.Author = "John Doe";
+        pdf.Title = "Barcode Example";
 
         var resource = new PdfResource(basePath + "DocumentA.pdf");
         var input = new PdfInput(resource);
@@ -228,7 +203,7 @@ export class InstructionsExample {
 
         var element = new AztecBarcodeElement("Hello World", elementPlacement.topCenter, 0, 500);
         template.elements.push(element);
-        input.Template = template;
+        input.template = template;
 
         await this.ProcessAndSave(pdf, apiKey, basePath, "json-Barcode-Example-output.pdf");
     }

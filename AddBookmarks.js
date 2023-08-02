@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import {
     Pdf,
     PdfResource,
@@ -14,7 +14,7 @@ export class AddBookmarks {
     static async Run() {
 
         var pdf = new Pdf();
-        pdf.apiKey = "DP.Y0hWTIaVHr2dmKjGcfAQe1S4px4ZaBcnjIALid4zOUt1TZDepDH3uRv0";
+        pdf.apiKey = "DP.xxx-api-key-xxx";
 
         var resourceA = new PdfResource("c:/temp/dynamicpdf-api-samples/add-bookmarks/DocumentA.pdf");
         var resourceB = new PdfResource("c:/temp/dynamicpdf-api-samples/add-bookmarks/DocumentB.pdf");

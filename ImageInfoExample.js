@@ -9,7 +9,7 @@ export class ImageInfoExample {
 
     static async Run() {
         var basePath = "C:/temp/dynamicpdf-api-usersguide-examples/";
-        var apiKey = "DP.xxx--api-key--xxx";
+        var apiKey = "DP.xxx-api-key-xxx";
         await ImageInfoExample.RunOne(apiKey, basePath);
         await ImageInfoExample.RunTwo(apiKey, basePath);
     }
@@ -17,11 +17,11 @@ export class ImageInfoExample {
     static async RunOne(apiKey, basePath) {
         var imageResource = new ImageResource(basePath + "getting-started.png");
         var imageInfo = new ImageInfo(imageResource);
-        imageInfo.ApiKey = apiKey;
-        var response = await imageInfo.Process();
+        imageInfo.apiKey = apiKey;
+        var response = await imageInfo.process();
 
-        if (response.IsSuccessful) {
-            console.log(JSON.parse(response.Content));
+        if (response.isSuccessful) {
+            console.log(JSON.parse(response.content));
         }
     }
 
@@ -29,11 +29,11 @@ export class ImageInfoExample {
     {
         var imageResource = new ImageResource(basePath + "multipage.tiff");
         var imageInfo = new ImageInfo(imageResource);
-        imageInfo.ApiKey = apiKey;
-        var response = await imageInfo.Process();
+        imageInfo.apiKey = apiKey;
+        var response = await imageInfo.process();
         
-        if (response.IsSuccessful) {
-            console.log(JSON.parse(response.Content));
+        if (response.isSuccessful) {
+            console.log(JSON.parse(response.content));
         }
     }
 }

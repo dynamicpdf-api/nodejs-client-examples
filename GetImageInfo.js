@@ -12,14 +12,14 @@ export class GetImageInfo {
         
         var imageResource = new ImageResource("C:/temp/dynamicpdf-api-samples/get-image-info/dynamicpdfLogo.png");
         var imageInfo = new ImageInfo(imageResource); 
-        imageInfo.ApiKey = "DP.xxx-api-key-xxx";
+        imageInfo.apiKey = "DP.xxx-api-key-xxx";
 
-        var imageResponse = await imageInfo.Process();
+        var imageResponse = await imageInfo.process();
 
-        if (imageResponse.IsSuccessful) {
-            console.log(JSON.parse(imageResponse.Content));
+        if (imageResponse.isSuccessful) {
+            console.log(JSON.parse(imageResponse.content));
         } else {
-            console.log(imageResponse.ErrorJson);
+            console.log(imageResponse.errorJson);
         }
     }
 }
