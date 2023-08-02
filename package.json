@@ -1,15 +1,23 @@
 {
   "name": "nodejs-client-examples",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Examples of DynamicPdf Cloud API client for NodeJS.",
   "main": "Examples.js",
   "type": "module",
-  "dependencies": {
-    "@dynamicpdf/api": "^1.x.x"
-  },
   "scripts": {
     "test": "node Examples.js"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dynamicpdf-api/nodejs-client-examples.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dynamicpdf-api/nodejs-client-examples/issues"
+  },
+  "dependencies": {
+    "@dynamicpdf/api": "^1.1.2",
+    "fs": "^0.0.1-security"
+  }
 }

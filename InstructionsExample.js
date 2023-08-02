@@ -12,6 +12,8 @@ import {
     Template,
     TextElement,
     AztecBarcodeElement,
+    DlexResource,
+    LayoutDataResource,
     elementPlacement
 } from "@dynamicpdf/api"
 
@@ -19,18 +21,20 @@ export class InstructionsExample {
 
     static async Run() {
 
-    var apiKey = "DP.TUzI+jra5JlcC7xtrcPG2nCKdNOnhlQCcAy7Fsqs4jExSohGyIZ2DLls";
-	var basePath = "c:/temp/dynamicpdf-api-samples/";
+    var apiKey = "DP.tlfNvFa4Rdx1CX73eomqeD2w5dG/xb2OyUHI8VMLxzFtSY6B7GgF3QGS";
+	var basePath = "c:/temp/dynamicpdf-api-samples/out/";
 
-    await this.BarcodeExample(apiKey, basePath);
-    await this.TemplateExample(apiKey, basePath);
-    await this.TopLevelMetaData(apiKey, basePath);
-    await this.FontsExample(apiKey, basePath);
-    await this.SecurityExample(apiKey, basePath);
-    await this.MergeExample(apiKey, basePath);
-    await this.FormFieldsExample(apiKey, basePath);
-    await this.AddOutlinesExistingPdf(apiKey, basePath);
-    await this.AddOutlinesForNewPdf(apiKey, basePath);
+   // await this.BarcodeExample(apiKey, basePath);
+   // await this.TemplateExample(apiKey, basePath);
+   // await this.TopLevelMetaData(apiKey, basePath);
+   // await this.FontsExample(apiKey, basePath);
+   // await this.SecurityExample(apiKey, basePath);
+   // await this.MergeExample(apiKey, basePath);
+   // await this.FormFieldsExample(apiKey, basePath);
+   // await this.AddOutlinesExistingPdf(apiKey, basePath);
+   // await this.AddOutlinesForNewPdf(apiKey, basePath);
+    await this.DlexResourceExample(apiKey, basePath);
+    await this.DlexResourceStreamExample(apiKey, basePath);
 
     }
 
@@ -43,6 +47,29 @@ export class InstructionsExample {
             outStream.write(res.content);
             outStream.close();
         }
+    }
+
+     static async DlexResourceStreamExample(apiKey, basePath) {
+
+        var pdf = new Pdf();
+
+        var dlexStream = fs.readFileSync("c:/temp/dlex-resource/SimpleReportWithCoverPage.dlex", "utf8");
+
+        var dlex = new DlexResource(dlexStream);
+        var layout = new LayoutDataResource("c:/temp/dlex-resource/SimpleReportWithCoverPage.json");
+        pdf.addDlex(dlex, layout);
+        await this.ProcessAndSave(pdf, apiKey, basePath, "dlex-resource-stream-nodejs.pdf");
+    }
+
+
+    static async DlexResourceExample(apiKey, basePath) {
+
+        var pdf = new Pdf();
+        var dlex = new DlexResource("c:/temp/dlex-resource/SimpleReportWithCoverPage.dlex");
+        var layout = new LayoutDataResource("c:/temp/dlex-resource/SimpleReportWithCoverPage.json");
+        pdf.addDlex(dlex, layout);
+        await this.ProcessAndSave(pdf, apiKey, basePath, "dlex-resource-nodejs.pdf");
+        
     }
 
     static async TopLevelMetaData(apiKey, basePath) {
