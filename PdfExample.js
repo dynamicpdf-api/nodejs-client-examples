@@ -14,6 +14,7 @@ export class PdfExample {
         var basePath = "C:/temp/dynamicpdf-api-usersguide-examples/";
         var apiKey = "DP.xxx-api-key-xxx";
         var pdf = new Pdf();
+        pdf.basePath = "https://api.dynamicpdf.com/";
         pdf.apiKey = apiKey;
         var pageInput = pdf.addPage(1008, 612);
         var pageNumberingElement = new PageNumberingElement("1", elementPlacement.topRight);
