@@ -16,6 +16,8 @@ export class MergePdfs {
         pdfInput.startPage = 1;
         pdfInput.pageCount = 1;
 
+
+        var pdfResource = new PdfResource();
         pdf.addPdf(new PdfResource("C:/temp/dynamicpdf-api-samples/DocumentB.pdf"));
 
 

@@ -20,20 +20,24 @@ export class InstructionsExample {
 
     static async Run() {
 
-    var apiKey = "DP.xxx-api-key-xxx";
-	var basePath = "c:/temp/dynamicpdf-api-usersguide-examples/";
+    var apiKey = "DP.jp1OeWjCQG0FCbkUt7MGXeJCXXEAjy7C5iSJNBNnKzJ9Q5Ss8+SjczcH";
+	var basePath = "c:/temp/users-guide-resources/";
 
-    await this.BarcodeExample(apiKey, basePath);
-    await this.TemplateExample(apiKey, basePath);
-    await this.TopLevelMetaData(apiKey, basePath);
-    await this.FontsExample(apiKey, basePath);
-    await this.SecurityExample(apiKey, basePath);
-    await this.MergeExample(apiKey, basePath);
-    await this.FormFieldsExample(apiKey, basePath);
-    await this.AddOutlinesExistingPdf(apiKey, basePath);
-    await this.AddOutlinesForNewPdf(apiKey, basePath);
+    //await this.BarcodeExample(apiKey, basePath);
+    //await this.TemplateExample(apiKey, basePath);
+   // await this.TopLevelMetaData(apiKey, basePath);
+   // await this.FontsExample(apiKey, basePath);
+   // await this.SecurityExample(apiKey, basePath);
+   // await this.MergeExample(apiKey, basePath);
+   // await this.FormFieldsExample(apiKey, basePath);
+   // await this.AddOutlinesExistingPdf(apiKey, basePath);
+   // await this.AddOutlinesForNewPdf(apiKey, basePath);
+   
+      await this.ImageExample(apiKey, basePath, "image-json-output.pdf");
 
     }
+
+
 
     static async ProcessAndSave(pdf, apiKey, basePath, outFileName) {
         pdf.apiKey = apiKey;
@@ -46,6 +50,25 @@ export class InstructionsExample {
         }
     }
 
+    static async ImageExample(apiKey, basePath, outFileName) {
+        var pdf = new Pdf();
+        //get image from local system
+        var ir = new ImageResource(basePath + "A.png");
+        pdf.addImage(ir);
+		
+        //get Image as binary from local system
+        var ir2 = null;
+        
+        ir2 = new ImageResource();
+        pdf.addImage(ir2);
+        
+        //get image from cloud storage
+        pdf.addImage("samples/users-guide-resources/C.png");
+        
+        await this.ProcessAndSave(pdf, apiKey, basePath, outFileName);
+
+    
+   }    
     static async TopLevelMetaData(apiKey, basePath) {
         var pdf = new Pdf();
         pdf.addPage(1008, 612);
@@ -96,6 +119,17 @@ export class InstructionsExample {
         sec.allowPrint = false;
         pdf.security = sec;
         await this.ProcessAndSave(pdf, apiKey, basePath, "json-SecurityExample-output.pdf");
+    }
+
+    static async PdfInputExample(apiKey, basePath) {
+
+        var pdf = new Pdf();
+        var pdfInput = pdf.addPdf(new PdfResource(basePath + "DocumentA.pdf"));
+        var pdfResource = new PdfResource(fs.readFileSync(basePath + "DocumentB.pdf"));
+        pdf.addPdf(pdfResource);
+        pdf.addPdf("samples/users-guide-resources/DocumentC.pdf");
+
+        await this.ProcessAndSave(pdf, apiKey, "c:/temp/instructions-example/out/", "pdf-json-output.pdf");
     }
 
     static async MergeExample(apiKey, basePath) {
