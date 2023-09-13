@@ -36,12 +36,12 @@ export class InstructionsExample {
     await this.AddOutlinesExistingPdf(basePath);
     await this.AddOutlinesForNewPdf(basePath);
     await this.HtmlExample(basePath);
-    await this.ImageExample(apiKey, basePath, "image-json-output.pdf");
+    await this.ImageExample(basePath);
 
     }
 
     static async ProcessAndSave(pdf, outFileName) {
-        pdf.apiKey = "DP.s2eSlDpAF80sPSdNDRi5wBfeVJQVeI1Q0CqqGubveJP/TLBiNNDWZpmH";
+        pdf.apiKey = "DP---API-KEY---";
         var outPath = "c:/temp/dynamicpdf-api-usersguide-examples/nodejs-output/";
     	var basePath = "c:/temp/users-guide-resources/";
 
@@ -54,22 +54,16 @@ export class InstructionsExample {
         }
     }
 
-    static async ImageExample(apiKey, basePath, outFileName) {
+    static async ImageExample(basePath) {
         var pdf = new Pdf();
-        //get image from local system
         var ir = new ImageResource(basePath + "A.png");
         pdf.addImage(ir);
 		
-        //get Image as binary from local system
-        var ir2 = null;
-        
-        ir2 = new ImageResource();
-        pdf.addImage(ir2);
-        
+             
         //get image from cloud storage
         pdf.addImage("samples/users-guide-resources/C.png");
         
-        await this.ProcessAndSave(pdf, apiKey, basePath, outFileName);
+        await this.ProcessAndSave(pdf, "image-json-output.pdf");
 
     
    }    
@@ -146,7 +140,7 @@ export class InstructionsExample {
         await this.ProcessAndSave(pdf, apiKey, "c:/temp/instructions-example/out/", "pdf-json-output.pdf");
     }
 
-    static async MergeExample(apiKey, basePath) {
+    static async MergeExample(basePath) {
         var pdf = new Pdf();
         pdf.addPdf(new PdfResource(basePath + "DocumentA.pdf"));
         var imageResource = new ImageResource(basePath + "DPDFLogo.png");
