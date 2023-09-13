@@ -22,6 +22,7 @@ export class InstructionsExample {
 
     static async Run() {
 
+
 	var basePath = "c:/temp/users-guide-resources/";
    
 
@@ -35,12 +36,15 @@ export class InstructionsExample {
     await this.AddOutlinesExistingPdf(basePath);
     await this.AddOutlinesForNewPdf(basePath);
     await this.HtmlExample(basePath);
+    await this.ImageExample(apiKey, basePath, "image-json-output.pdf");
 
     }
 
     static async ProcessAndSave(pdf, outFileName) {
-        pdf.apiKey = "DP---API-KEY---";
+        pdf.apiKey = "DP.s2eSlDpAF80sPSdNDRi5wBfeVJQVeI1Q0CqqGubveJP/TLBiNNDWZpmH";
         var outPath = "c:/temp/dynamicpdf-api-usersguide-examples/nodejs-output/";
+    	var basePath = "c:/temp/users-guide-resources/";
+
         var res = await pdf.process();
         
         if (res.isSuccessful) {
@@ -50,7 +54,26 @@ export class InstructionsExample {
         }
     }
 
-    static async TopLevelMetaData(basePath) {
+    static async ImageExample(apiKey, basePath, outFileName) {
+        var pdf = new Pdf();
+        //get image from local system
+        var ir = new ImageResource(basePath + "A.png");
+        pdf.addImage(ir);
+		
+        //get Image as binary from local system
+        var ir2 = null;
+        
+        ir2 = new ImageResource();
+        pdf.addImage(ir2);
+        
+        //get image from cloud storage
+        pdf.addImage("samples/users-guide-resources/C.png");
+        
+        await this.ProcessAndSave(pdf, apiKey, basePath, outFileName);
+
+    
+   }    
+    static async TopLevelMetaData(apiKey, basePath) {
         var pdf = new Pdf();
         pdf.addPage(1008, 612);
         pdf.author = "John Doe";
@@ -112,8 +135,18 @@ export class InstructionsExample {
         await this.ProcessAndSave(pdf, "json-SecurityExample-output.pdf");
     }
 
-    static async MergeExample(basePath) {
+    static async PdfInputExample(apiKey, basePath) {
 
+        var pdf = new Pdf();
+        var pdfInput = pdf.addPdf(new PdfResource(basePath + "DocumentA.pdf"));
+        var pdfResource = new PdfResource(fs.readFileSync(basePath + "DocumentB.pdf"));
+        pdf.addPdf(pdfResource);
+        pdf.addPdf("samples/users-guide-resources/DocumentC.pdf");
+
+        await this.ProcessAndSave(pdf, apiKey, "c:/temp/instructions-example/out/", "pdf-json-output.pdf");
+    }
+
+    static async MergeExample(apiKey, basePath) {
         var pdf = new Pdf();
         pdf.addPdf(new PdfResource(basePath + "DocumentA.pdf"));
         var imageResource = new ImageResource(basePath + "DPDFLogo.png");
