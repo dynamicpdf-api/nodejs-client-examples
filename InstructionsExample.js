@@ -8,45 +8,49 @@ import {
     RgbColor,
     Font,
     Aes256Security,
-    ImageResponse,
     ImageResource,
     FormField,
     Template,
     TextElement,
-    AztecBarcodeElement
+    AztecBarcodeElement,
+    PageSize,
+    Orientation,
+    HtmlResource
 } from "@dynamicpdf/api"
 
 export class InstructionsExample {
 
     static async Run() {
 
-    var apiKey = "DP.xxx-api-key-xxx";
-	var basePath = "c:/temp/dynamicpdf-api-usersguide-examples/";
+	var basePath = "c:/temp/users-guide-resources/";
+   
 
-    await this.BarcodeExample(apiKey, basePath);
-    await this.TemplateExample(apiKey, basePath);
-    await this.TopLevelMetaData(apiKey, basePath);
-    await this.FontsExample(apiKey, basePath);
-    await this.SecurityExample(apiKey, basePath);
-    await this.MergeExample(apiKey, basePath);
-    await this.FormFieldsExample(apiKey, basePath);
-    await this.AddOutlinesExistingPdf(apiKey, basePath);
-    await this.AddOutlinesForNewPdf(apiKey, basePath);
+    await this.BarcodeExample(basePath);
+    await this.TemplateExample(basePath);
+    await this.TopLevelMetaData(basePath);
+    await this.FontsExample(basePath);
+    await this.SecurityExample(basePath);
+    await this.MergeExample(basePath);
+    await this.FormFieldsExample(basePath);
+    await this.AddOutlinesExistingPdf(basePath);
+    await this.AddOutlinesForNewPdf(basePath);
+    await this.HtmlExample(basePath);
 
     }
 
-    static async ProcessAndSave(pdf, apiKey, basePath, outFileName) {
-        pdf.apiKey = apiKey;
+    static async ProcessAndSave(pdf, outFileName) {
+        pdf.apiKey = "DP---API-KEY---";
+        var outPath = "c:/temp/dynamicpdf-api-usersguide-examples/nodejs-output/";
         var res = await pdf.process();
         
         if (res.isSuccessful) {
-            var outStream = fs.createWriteStream(basePath + outFileName);
+            var outStream = fs.createWriteStream(outPath + outFileName);
             outStream.write(res.content);
             outStream.close();
         }
     }
 
-    static async TopLevelMetaData(apiKey, basePath) {
+    static async TopLevelMetaData(basePath) {
         var pdf = new Pdf();
         pdf.addPage(1008, 612);
         pdf.author = "John Doe";
@@ -54,10 +58,20 @@ export class InstructionsExample {
         pdf.creator = "John Creator";
         pdf.subject = "topLevel document metadata";
         pdf.title = "Sample PDF";
-        await this.ProcessAndSave(pdf, apiKey, basePath, "json-top-level-metadata-output.pdf");
+        await this.ProcessAndSave(pdf, "json-top-level-metadata-output.pdf");
     }
 
-    static async FontsExample(apiKey, basePath) {
+    static async HtmlExample(basePath) {
+        var pdf = new Pdf();
+        pdf.addHtml("<html>An example HTML fragment.</html>");
+        pdf.addHtml("<html><p>HTML with basePath.</p><img src='./images/logo.png'></img></html>",
+        "https://www.dynamicpdf.com", PageSize.LETTER, Orientation.PORTRAIT,1);
+        var resourcePath = basePath + "/products.html";
+        pdf.addHtml(new HtmlResource(resourcePath), null, PageSize.LETTER, Orientation.PORTRAIT, 1);
+        await this.ProcessAndSave(pdf, "html-output.pdf");
+    }
+
+    static async FontsExample(basePath) {
         var pdf = new Pdf();
         var pageInput = pdf.addPage(1008, 612);
         var pageNumberingElement = new PageNumberingElement("A", elementPlacement.topRight);
@@ -65,7 +79,7 @@ export class InstructionsExample {
         pageNumberingElement.font = Font.helvetica;
         pageNumberingElement.fontSize = 42;
     
-        var cloudResourceName = "old_samples/shared/font/Calibri.otf";
+        var cloudResourceName = "samples/users-guide-resources/Calibri.otf";
         var pageNumberingElementTwo = new PageNumberingElement("B", elementPlacement.topLeft);
         pageNumberingElementTwo.color = RgbColor.darkOrange;
         pageNumberingElementTwo.font = new Font(cloudResourceName);
@@ -80,10 +94,10 @@ export class InstructionsExample {
         pageInput.elements.push(pageNumberingElement);
         pageInput.elements.push(pageNumberingElementTwo);
         pageInput.elements.push(pageNumberingElementThree);
-        await this.ProcessAndSave(pdf, apiKey, basePath, "json-font-output.pdf");
+        await this.ProcessAndSave(pdf, "json-font-output.pdf");
     }
 
-    static async SecurityExample(apiKey, basePath) {
+    static async SecurityExample(basePath) {
 
         var fileResource = basePath + "DocumentB.pdf";
         var userName = "myuser";
@@ -95,20 +109,20 @@ export class InstructionsExample {
         sec.allowCopy = false;
         sec.allowPrint = false;
         pdf.security = sec;
-        await this.ProcessAndSave(pdf, apiKey, basePath, "json-SecurityExample-output.pdf");
+        await this.ProcessAndSave(pdf, "json-SecurityExample-output.pdf");
     }
 
-    static async MergeExample(apiKey, basePath) {
+    static async MergeExample(basePath) {
 
         var pdf = new Pdf();
         pdf.addPdf(new PdfResource(basePath + "DocumentA.pdf"));
-        var imageResource = new ImageResource(basePath + "dynamicpdfLogo.png");
+        var imageResource = new ImageResource(basePath + "DPDFLogo.png");
         pdf.addImage(imageResource);
         pdf.addPdf(new PdfResource(basePath + "DocumentB.pdf"));
-        await this.ProcessAndSave(pdf, apiKey, basePath, "json-merge-example-output.pdf");
+        await this.ProcessAndSave(pdf, "json-merge-example-output.pdf");
     }
 
-    static async FormFieldsExample(apiKey, basePath) {
+    static async FormFieldsExample(basePath) {
 
         var pdf = new Pdf();
         pdf.addPdf(new PdfResource(basePath + "simple-form-fill.pdf"));
@@ -120,10 +134,10 @@ export class InstructionsExample {
         pdf.formFields.push(formField);
         pdf.formFields.push(formField2);
 
-        await this.ProcessAndSave(pdf, apiKey, basePath, "json-FormFieldsExample-output.pdf");
+        await this.ProcessAndSave(pdf, "json-FormFieldsExample-output.pdf");
     }
 
-    static async AddOutlinesExistingPdf(apiKey, basePath) {
+    static async AddOutlinesExistingPdf(basePath) {
 
         var pdf = new Pdf();
         pdf.Author = "John Doe";
@@ -143,10 +157,10 @@ export class InstructionsExample {
         rootOutline.children.addPdfOutlines(input);
         rootOutline.children.addPdfOutlines(input1);
 
-        await this.ProcessAndSave(pdf, apiKey, basePath, "json-AddOutlinesExisting-output.pdf");
+        await this.ProcessAndSave(pdf, "json-AddOutlinesExisting-output.pdf");
     }
 
-    static async AddOutlinesForNewPdf(apiKey, basePath) {
+    static async AddOutlinesForNewPdf(basePath) {
 
         var pdf = new Pdf();
         pdf.Author = "John Doe";
@@ -170,10 +184,10 @@ export class InstructionsExample {
         rootOutline.children.add("Page 2", pageInput1);
         rootOutline.children.add("Page 3", pageInput2);
 
-        await this.ProcessAndSave(pdf, apiKey, basePath, "json-AddOutlinesForNewPdf-output.pdf");
+        await this.ProcessAndSave(pdf, "json-AddOutlinesForNewPdf-output.pdf");
     }
 
-    static async TemplateExample(apiKey, basePath) {
+    static async TemplateExample(basePath) {
         var pdf = new Pdf();
         pdf.Author = "John User";
         pdf.Title = "Template Example One";
@@ -186,11 +200,10 @@ export class InstructionsExample {
         template.elements.push(element);
         input.template = template;
 
-        await this.ProcessAndSave(pdf, apiKey, basePath, "json-TemplateExample-output.pdf");
+        await this.ProcessAndSave(pdf, "json-TemplateExample-output.pdf");
     }
 
-    static async BarcodeExample(apiKey, basePath) {
-
+    static async BarcodeExample(basePath) {
         var pdf = new Pdf();
         pdf.Author = "John Doe";
         pdf.Title = "Barcode Example";
@@ -205,7 +218,7 @@ export class InstructionsExample {
         template.elements.push(element);
         input.template = template;
 
-        await this.ProcessAndSave(pdf, apiKey, basePath, "json-Barcode-Example-output.pdf");
+        await this.ProcessAndSave(pdf, "json-Barcode-Example-output.pdf");
     }
 
 }
