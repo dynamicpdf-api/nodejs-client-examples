@@ -15,7 +15,9 @@ import {
     AztecBarcodeElement,
     PageSize,
     Orientation,
-    HtmlResource
+    HtmlResource,
+    WordInput, 
+    WordResource
 } from "@dynamicpdf/api"
 
 export class InstructionsExample {
@@ -37,6 +39,7 @@ export class InstructionsExample {
     await this.AddOutlinesForNewPdf(basePath);
     await this.HtmlExample(basePath);
     await this.ImageExample(basePath);
+    await this.WordExample(basePath);
 
     }
 
@@ -52,6 +55,19 @@ export class InstructionsExample {
             outStream.write(res.content);
             outStream.close();
         }
+    }
+
+
+    static async WordExample(basePath) {
+        var pdf = new Pdf();
+       
+        var resource = new WordResource( basePath + "Doc1.docx", "Doc1.docx");
+        var word =new WordInput(resource);
+        word.LeftMargin=100;
+        word.TopMargin =100;
+        word.PageSize=PageSize.A3;
+        pdf.inputs.push(word);
+        await this.ProcessAndSave(pdf, "word-output.pdf");
     }
 
     static async ImageExample(basePath) {
