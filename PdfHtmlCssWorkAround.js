@@ -15,7 +15,7 @@ export class PdfHtmlCssWorkAround {
 
         var pdf = new Pdf();
         pdf.basePath = "http://api.dynamicpdf.com/";
-        pdf.apiKey = "DP---API-KEY---";
+        pdf.apiKey = "DP.xxx-api-key-xxx";
      
         var tempHtml = fs.readFileSync(basePath + "example.html", 'utf8');
         var tempCss = fs.readFileSync(basePath + "example.css", 'utf-8');

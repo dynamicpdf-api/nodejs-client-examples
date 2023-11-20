@@ -44,7 +44,7 @@ export class InstructionsExample {
     }
 
     static async ProcessAndSave(pdf, outFileName) {
-        pdf.apiKey = "DP---API-KEY---";
+        pdf.apiKey = "DP.xxx-api-key-xxx";
         var outPath = "c:/temp/dynamicpdf-api-usersguide-examples/nodejs-output/";
     	var basePath = "c:/temp/users-guide-resources/";
 
