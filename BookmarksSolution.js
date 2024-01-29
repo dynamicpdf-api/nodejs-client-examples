@@ -12,7 +12,7 @@ export class BookmarksSolution {
     static async Run() {
 
         var basePath = "C:/temp/dynamicpdf-api-samples/outlines/";
-        var apiKey = "DP.RvbcBY3ANVRA8sRi3K1rNi8iXIPCwx1aFEBiJNVidp92TYLHnSTX3J6J";
+        var apiKey = "DP--api-key--";
         var pdf = new Pdf();
         pdf.basePath = "https://api.dynamicpdf.com/";
         pdf.apiKey = apiKey;
