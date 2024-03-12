@@ -5,7 +5,7 @@ nodejs-client-examples
 
 The Node.js Client Examples (`nodejs-client-examples`) project provides examples using the DynamicPDF Cloud API Node.js client library. This project contains numerous sample projects for the tutorials and examples at the [DynamicPDF Cloud API](https://cloud.dynamicpdf.com/) website.
 
-The DynamicPDF Cloud API consists of the following endpoints.
+The DynamicPDF API consists of the following endpoints.
 
 * `dlex-layout`
 * `image-info`
@@ -14,12 +14,12 @@ The DynamicPDF Cloud API consists of the following endpoints.
 * `pdf-text`
 * `pdf-xmp`
 
-For more information, please visit [DynamicPDF Cloud API](https://cloud.dynamicpdf.com/ "DynamicPDF Cloud API Homepage"). Support for other languages/platforms (PHP, C#, Node.js) is available on GitHub ([DynamicPDF Cloud API at GitHub](https://github.com/dynamicpdf-api "DynamicPDF Cloud API at GitHub")).
+For more information, please visit [DynamicPDF API](https://cloud.dynamicpdf.com/ "DynamicPDF Cloud API Homepage"). Support for other languages/platforms (PHP, C#, Node.js) is available on GitHub ([DynamicPDF Cloud API at GitHub](https://github.com/dynamicpdf-api "DynamicPDF Cloud API at GitHub")).
 
 Running Examples
 ----------------
 
-To install the `nodejs-client-examples` for the DynamicPDF Cloud API, run the following commands.
+To install the `nodejs-client-examples` for the DynamicPDF API, run the following commands.
 
 ```bash
 $ cd ./nodejs-client-examples
