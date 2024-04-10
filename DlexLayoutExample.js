@@ -9,7 +9,7 @@ export class DlexLayoutExample {
 
     static async Run() {
         var localPath = "c:/temp/dlex-layout/";
-        var apiKey = "DP.J+G1BiQYH7x+3D7uR5jo+Jo0PPKrY0nU1l+j3XbOtobjTqpWSZErUV70";
+        var apiKey = "DP--api-key--";
         await this.RunFromCloud(apiKey, localPath);
         await this.RunFromLocal(apiKey, localPath);
     }

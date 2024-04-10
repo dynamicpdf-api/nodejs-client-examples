@@ -2,16 +2,14 @@ import fs from 'fs';
 import {
     Pdf,
     FormField,
-    PdfResource
 } from "@dynamicpdf/api"
 
-// https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-tutorial-form-completion
 
 export class CompletingAcroForm {
     static async Run() {
 
         var pdf = new Pdf();
-        pdf.apiKey =  "DP.xxx-api-key-xxx";
+        pdf.apiKey =  "DP.xLyUkwy0mKn/6iVPfoxL+2gJk1t5UdOBKPvT2pLwaU9IQYuq/zRY/FTE";
         pdf.addPdf("samples/fill-acro-form-pdf-endpoint/fw9AcroForm_18.pdf");
 
         var formField = new FormField("topmostSubform[0].Page1[0].f1_1[0]", "Any Company, Inc.");
@@ -36,7 +34,7 @@ export class CompletingAcroForm {
         var res = await pdf.process();
         
         if (res.isSuccessful) {
-            var outFile = "C:/temp/dynamicpdf-api-samples/fill-acro-form/fill-acro-form-nodejs-output.pdf";
+            var outFile = "./output/fill-acro-form-nodejs-output.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();
