@@ -5,14 +5,13 @@ import {
     Endpoint
 } from "@dynamicpdf/api"
 
-// https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-xmp/tutorial-pdf-xmp
 
 export class GetXmpMetaData {
 
     static async Run() {
-        var resource = new PdfResource("C:/temp/dynamicpdf-api-samples/get-xmp-metadata/fw4.pdf")
+        var resource = new PdfResource("C:/temp/dynamicpdf-api-samples/get-xmp-metadata-pdf-xmp-endpoint/fw4.pdf")
         var pdfXmp = new PdfXmp(resource);
-        pdfXmp.apiKey = "DP.xxx-api-key-xxx";
+        pdfXmp.apiKey = "DP--api-key--";
 
         var res = await pdfXmp.process();
 

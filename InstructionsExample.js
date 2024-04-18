@@ -25,8 +25,7 @@ export class InstructionsExample {
     static async Run() {
 
 
-	var basePath = "c:/temp/users-guide-resources/";
-   
+	var basePath = "./resources/users-guide/";
 
     await this.BarcodeExample(basePath);
     await this.TemplateExample(basePath);
@@ -38,15 +37,15 @@ export class InstructionsExample {
     await this.AddOutlinesExistingPdf(basePath);
     await this.AddOutlinesForNewPdf(basePath);
     await this.HtmlExample(basePath);
-    await this.ImageExample(basePath);
+    await this.ImageExample(basePath); 
     await this.WordExample(basePath);
 
     }
 
     static async ProcessAndSave(pdf, outFileName) {
-        pdf.apiKey = "DP.xxx-api-key-xxx";
-        var outPath = "c:/temp/dynamicpdf-api-usersguide-examples/nodejs-output/";
-    	var basePath = "c:/temp/users-guide-resources/";
+        pdf.apiKey = "DP--api-key--";
+        var outPath = "./output/";
+    	var basePath = "./resources/users-guide/";
 
         var res = await pdf.process();
         
@@ -56,7 +55,6 @@ export class InstructionsExample {
             outStream.close();
         }
     }
-
 
     static async WordExample(basePath) {
         var pdf = new Pdf();
@@ -153,7 +151,7 @@ export class InstructionsExample {
         pdf.addPdf(pdfResource);
         pdf.addPdf("samples/users-guide-resources/DocumentC.pdf");
 
-        await this.ProcessAndSave(pdf, apiKey, "c:/temp/instructions-example/out/", "pdf-json-output.pdf");
+        await this.ProcessAndSave(pdf, apiKey, "./output/", "pdf-json-output.pdf");
     }
 
     static async MergeExample(basePath) {
