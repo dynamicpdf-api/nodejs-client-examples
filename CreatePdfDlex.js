@@ -2,26 +2,57 @@ import fs from 'fs';
 import {
     Pdf,
     LayoutDataResource,
-    PdfResponse,
-    PdfResource
-
+    DlexResource,
+    Resource
 } from "@dynamicpdf/api"
 
-// https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-tutorial-dlex-pdf-endpoint
 
 export class CreatePdfDlex {
     static async Run() {
 
-        var pdf = new Pdf();
-        pdf.apiKey = "DP.xxx-api-key-xxx";
+        var apiKey = "DP.dASL7G5Gz8VJgEwjUly9+ooHTbSSO7pOhGrt36dHXllYQK4E1wURRI+x";
+        var basePath = "./resources/creating-pdf-pdf-endpoint/";
+        var outputPath = "./output/";
 
-        var layoutDataResource = new LayoutDataResource("C:/temp/dynamicpdf-api-samples/create-pdf-dlex/SimpleReportWithCoverPage.json");
+        await CreatePdfDlex.RunLocal(apiKey, basePath, outputPath);
+        await CreatePdfDlex.RunRemote(apiKey, basePath, outputPath);
+    }
+
+    static async RunLocal(apiKey, basePath, outputPath){
+        var pdf = new Pdf();
+        pdf.apiKey = apiKey;
+
+        var layoutDataResource = new LayoutDataResource(basePath + "SimpleReportWithCoverPage.json");
+        var dlexResource = new DlexResource(basePath + "SimpleReportWithCoverPage.dlex");
+       
+        pdf.addDlex(dlexResource, layoutDataResource);
+       
+        var resource = new Resource(basePath + "Northwind logo.gif", "Northwind logo.gif");
+      
+
+        var res = await pdf.process();
+
+        if (res.isSuccessful) {
+            var outFile = outputPath + "create-pdf-dlex-output_nodejs.pdf";
+            var outStream = fs.createWriteStream(outFile);
+            outStream.write(res.content);
+            outStream.close();
+        } else {
+            console.log(res.errorJson);
+        }
+    }
+    
+    static async RunRemote(apiKey, basePath, outputPath){
+        var pdf = new Pdf();
+        pdf.apiKey = apiKey;
+
+        var layoutDataResource = new LayoutDataResource(basePath + "SimpleReportWithCoverPage.json");
         pdf.addDlex("samples/creating-pdf-pdf-endpoint/SimpleReportWithCoverPage.dlex", layoutDataResource);
 
         var res = await pdf.process();
 
         if (res.isSuccessful) {
-            var outFile = "C:/temp/dynamicpdf-api-samples/create-pdf-dlex/create-pdf-dlex-output_nodejs.pdf";
+            var outFile = outputPath + "create-pdf-dlex-output_nodejs.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();
