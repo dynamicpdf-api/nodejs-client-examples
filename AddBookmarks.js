@@ -7,18 +7,17 @@ import {
 } from "@dynamicpdf/api"
 import { Console } from 'console';
 
-// https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/pdf-tutorial-bookmarks
 
 export class AddBookmarks {
 
     static async Run() {
 
         var pdf = new Pdf();
-        pdf.apiKey = "DP.xxx-api-key-xxx";
+        pdf.apiKey = "DP--api-key--";
 
-        var resourceA = new PdfResource("c:/temp/dynamicpdf-api-samples/add-bookmarks/DocumentA.pdf");
-        var resourceB = new PdfResource("c:/temp/dynamicpdf-api-samples/add-bookmarks/DocumentB.pdf");
-        var resourceC = new PdfResource("c:/temp/dynamicpdf-api-samples/add-bookmarks/DocumentC.pdf");
+        var resourceA = new PdfResource("./resources/add-bookmarks/DocumentA.pdf");
+        var resourceB = new PdfResource("./resources/add-bookmarks/DocumentB.pdf");
+        var resourceC = new PdfResource("./resources/add-bookmarks/DocumentC.pdf");
 
         var inputA = pdf.addPdf(resourceA);
         inputA.Id = "DocumentA";
@@ -47,7 +46,7 @@ export class AddBookmarks {
         var res = await pdf.process();
 
         if (res.isSuccessful) {
-            var outFile = "c:/temp/dynamicpdf-api-samples/add-bookmarks/add-bookmarks-javascript-output.pdf";
+            var outFile = "./output/add-bookmarks-javascript-output.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();
