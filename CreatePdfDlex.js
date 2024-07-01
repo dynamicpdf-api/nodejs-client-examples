@@ -10,7 +10,7 @@ import {
 export class CreatePdfDlex {
     static async Run() {
 
-        var apiKey = "DP.dASL7G5Gz8VJgEwjUly9+ooHTbSSO7pOhGrt36dHXllYQK4E1wURRI+x";
+        var apiKey = "DP.rOevSIHcbJqaRnkJZhoi+h12X3TxCiflWi++UTS03/0kQ52oTGvCYZQo";
         var basePath = "./resources/creating-pdf-pdf-endpoint/";
         var outputPath = "./output/";
 
@@ -29,6 +29,8 @@ export class CreatePdfDlex {
        
         var resource = new Resource(basePath + "Northwind logo.gif", "Northwind logo.gif");
       
+    
+        pdf.dle
 
         var res = await pdf.process();
 

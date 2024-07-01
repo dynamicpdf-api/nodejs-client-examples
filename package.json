@@ -17,7 +17,7 @@
     "url": "https://github.com/dynamicpdf-api/nodejs-client-examples/issues"
   },
   "dependencies": {
-    "@dynamicpdf/api": "^1.5.0",
+    "@dynamicpdf/api": "^1.6.2",
     "axios": "^1.6.7",
     "fs": "^0.0.1-security"
   }
