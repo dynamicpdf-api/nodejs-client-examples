@@ -7,7 +7,7 @@ import {
     ImageInput
 } from "@dynamicpdf/api"
 
-
+import {Constants} from './constants.js';
 
 export class ImageConversion {
 
@@ -15,8 +15,8 @@ export class ImageConversion {
               
         var pdf = new Pdf();
     
-        var imageResource = new ImageResource("c:/temp/dynamicpdf-api-samples/image-conversion/testimage.tif")
-        var imageResource2 = new ImageResource("c:/temp/dynamicpdf-api-samples/image-conversion/dynamicpdfLogo.png")
+        var imageResource = new ImageResource(Constants.BasePath + "image-conversion/testimage.tif")
+        var imageResource2 = new ImageResource(Constants.BasePath + "image-conversion/dynamicpdfLogo.png")
 
         var imageInput = new ImageInput(imageResource);
         var imageInput2 = new ImageInput(imageResource2);
@@ -37,12 +37,12 @@ export class ImageConversion {
         pdf.inputs.push(imageInput2);
 
 
-        pdf.apiKey =  "DP.BKMFqqItEDZb9iBeSAJvzZAgqhH6oyY9SBiKezfyw+rTRosKxx0oD9f9";
+        pdf.apiKey =  Constants.ApiKey;
         
         var res = await pdf.process();
         
         if (res.isSuccessful) {
-            var outFile = "C:/temp/dynamicpdf-api-samples/image-conversion/image-conversion-output.pdf";
+            var outFile = Constants.OutputPath + "image-conversion-output.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();

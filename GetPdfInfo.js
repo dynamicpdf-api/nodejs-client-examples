@@ -3,13 +3,14 @@ import {
     PdfInfo
 } from "@dynamicpdf/api"
 
+import {Constants} from './constants.js';
+
 export class GetPdfInfo {
     static async Run() {
-        var basePath = "./resources/get-pdf-info-pdf-info-endpoint/";
-        var outputPath = "./output/";        
-        var resource = new PdfResource(basePath + "fw4.pdf");
+         
+        var resource = new PdfResource(Constants.BasePath + "get-pdf-info-pdf-info-endpoint/fw4.pdf");
         var pdfInfo = new PdfInfo(resource);
-        pdfInfo.apiKey = "DP--api-key--";
+        pdfInfo.apiKey = Constants.ApiKey;
 
         var res = await pdfInfo.process();
         

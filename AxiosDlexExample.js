@@ -2,17 +2,18 @@ import fs from 'fs';
 import axios from 'axios';
 import FormData from "form-data";
 
+import {Constants} from './constants.js';
+
 export class AxiosDlexExample {
 
   static async Run() {
 
-      const basePath = "c:/temp/example/";
-
+    
       // simulate reading from a buffer in memory, note, if using a JSON
       // file you could just use fs.createReadStream in the data.append method
       // data.append('LayoutData', fs.createReadStream("c:/temp/example/SimpleReportWithCoverPage.json"));
 
-      const obj = fs.readFileSync(basePath + "SimpleReportWithCoverPage.json", "utf-8");
+      const obj = fs.readFileSync(Constants.BasePath + "creating-pdf-pdf-endpoint/SimpleReportWithCoverPage.json", "utf-8");
       const buffer = Buffer.from(obj, "utf8");
 
       // create formdata and append the HTTP Post Fields
@@ -27,8 +28,8 @@ export class AxiosDlexExample {
       // if using DLEX locally, use Resource. Do not forget to include any embedded images
       // as the DLEX file contains a relative path to the image
 
-      data.append('Resource', fs.createReadStream(basePath + "SimpleReportWithCoverPage.dlex"));
-      data.append('Resource', fs.createReadStream(basePath + "NorthwindLogo.gif")); 
+      data.append('Resource', fs.createReadStream(Constants.BasePath + "creating-pdf-pdf-endpoint/SimpleReportWithCoverPage.dlex"));
+      data.append('Resource', fs.createReadStream(Constants.BasePath + "creating-pdf-pdf-endpoint/Northwind Logo.gif")); 
 
       var config = {
         method: 'post',
@@ -36,7 +37,7 @@ export class AxiosDlexExample {
         responseType: 'stream',
         url: 'https://api.dynamicpdf.com/v1.0/dlex-layout',
         headers: { 
-          'Authorization': 'Bearer DP--api-key--',
+          'Authorization': 'Bearer ' + Constants.ApiKey,
           'Content-Type':'multipart/form-data', 
           ...data.getHeaders()
         },
@@ -45,7 +46,7 @@ export class AxiosDlexExample {
         
       axios.request(config)
       .then((response) => {
-          response.data.pipe(fs.createWriteStream("C:/temp/example/output.pdf"))
+          response.data.pipe(fs.createWriteStream(Constants.OutputPath + "axios-output.pdf"))
       })
       .catch((error) => {
         console.log(error);

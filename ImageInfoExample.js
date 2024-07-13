@@ -3,21 +3,19 @@ import {
     ImageInfo,
 } from "@dynamicpdf/api"
 
-// https://cloud.dynamicpdf.com/docs/tutorials/cloud-api/image-info/tutorial-image-info
+import {Constants} from './constants.js';
 
 export class ImageInfoExample {
 
     static async Run() {
-        var basePath = "C:/temp/dynamicpdf-api-usersguide-examples/";
-        var apiKey = "DP.xxx-api-key-xxx";
-        await ImageInfoExample.RunOne(apiKey, basePath);
-        await ImageInfoExample.RunTwo(apiKey, basePath);
+        await ImageInfoExample.RunOne();
+        await ImageInfoExample.RunTwo();
     }
 
-    static async RunOne(apiKey, basePath) {
-        var imageResource = new ImageResource(basePath + "getting-started.png");
+    static async RunOne() {
+        var imageResource = new ImageResource(Constants.BasePath + "image-conversion/dynamicPdfLogo.png");
         var imageInfo = new ImageInfo(imageResource);
-        imageInfo.apiKey = apiKey;
+        imageInfo.apiKey = Constants.ApiKey;
         var response = await imageInfo.process();
 
         if (response.isSuccessful) {
@@ -27,9 +25,9 @@ export class ImageInfoExample {
 
     static async RunTwo(apiKey, basePath)
     {
-        var imageResource = new ImageResource(basePath + "multipage.tiff");
+        var imageResource = new ImageResource(Constants.BasePath + "image-conversion/MultiPageTiff.tif");
         var imageInfo = new ImageInfo(imageResource);
-        imageInfo.apiKey = apiKey;
+        imageInfo.apiKey = Constants.ApiKey;
         var response = await imageInfo.process();
         
         if (response.isSuccessful) {

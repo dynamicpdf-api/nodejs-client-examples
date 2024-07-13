@@ -6,16 +6,15 @@ import {
     PdfResource
 } from "@dynamicpdf/api"
 
-export class BookmarksSolution {
+import {Constants} from './constants.js';
 
+export class BookmarksSolution {
     
     static async Run() {
 
-        var basePath = "C:/temp/dynamicpdf-api-samples/outlines/";
-        var apiKey = "DP--api-key--";
+        var basePath = Constants.BasePath + "/users-guide/";
         var pdf = new Pdf();
-        pdf.basePath = "https://api.dynamicpdf.com/";
-        pdf.apiKey = apiKey;
+        pdf.apiKey = Constants.ApiKey;
 
         var pageInput1 = pdf.addPage();
         var element1 = new TextElement("Hello World 2", elementPlacement.topCenter);
@@ -30,7 +29,7 @@ export class BookmarksSolution {
         var res = await pdf.process();
        
         if (res.isSuccessful) {
-            var outFile = basePath + "outlines-output.pdf";
+            var outFile = Constants.OutputPath + "outlines-output.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();

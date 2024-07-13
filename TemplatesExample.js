@@ -10,16 +10,15 @@ import {
     TextElement
 } from "@dynamicpdf/api"
 
+
+import {Constants} from './constants.js';
+
 export class TemplatesExample {
     
     static async Run() {
 
-        var basePath = "C:/temp/solutions/templates/";
-        var apiKey = "DP--api-key--";
         var pdf = new Pdf();
-       
-        pdf.basePath = "https://api.dynamicpdf.com/";
-        pdf.apiKey = apiKey;
+        pdf.apiKey = Constants.ApiKey;
   
         var templateA = new Template("Temp1");
 	    var textElement = new TextElement("Hello PDF", elementPlacement.topCenter);
@@ -29,7 +28,7 @@ export class TemplatesExample {
 		textElement.yOffset = 100;
 
 	    
-        var input1 = pdf.addPdf(new PdfResource(basePath + "DocumentA.pdf"));
+        var input1 = pdf.addPdf(new PdfResource(Constants.BasePath + "users-guide/DocumentA.pdf"));
 	            
         input1.template = templateA;
 		templateA.elements.push(textElement);
@@ -51,7 +50,7 @@ export class TemplatesExample {
         var res = await pdf.process();
 
         if (res.isSuccessful) {
-            var outFile = basePath + "template-output.pdf";
+            var outFile = Constants.OutputPath + "template-output.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();

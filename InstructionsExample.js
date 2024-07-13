@@ -20,12 +20,13 @@ import {
     WordResource
 } from "@dynamicpdf/api"
 
+
+import {Constants} from './constants.js';
+
 export class InstructionsExample {
 
     static async Run() {
-
-
-	var basePath = "./resources/users-guide/";
+	var basePath = Constants.BasePath + "users-guide/";
 
     await this.BarcodeExample(basePath);
     await this.TemplateExample(basePath);
@@ -43,9 +44,9 @@ export class InstructionsExample {
     }
 
     static async ProcessAndSave(pdf, outFileName) {
-        pdf.apiKey = "DP--api-key--";
-        var outPath = "./output/";
-    	var basePath = "./resources/users-guide/";
+        pdf.apiKey = Constants.ApiKey
+        var outPath = Constants.OutputPath;
+    	var basePath = Constants.OutputPath + "users-guide/";
 
         var res = await pdf.process();
         
@@ -96,7 +97,7 @@ export class InstructionsExample {
         var pdf = new Pdf();
         pdf.addHtml("<html>An example HTML fragment.</html>");
         pdf.addHtml("<html><p>HTML with basePath.</p><img src='./images/logo.png'></img></html>",
-        "https://www.dynamicpdf.com", PageSize.LETTER, Orientation.PORTRAIT,1);
+        "https://www.dynamicpdf.com", null, PageSize.LETTER, Orientation.PORTRAIT,1);
         var resourcePath = basePath + "/products.html";
         pdf.addHtml(new HtmlResource(resourcePath), null, PageSize.LETTER, Orientation.PORTRAIT, 1);
         await this.ProcessAndSave(pdf, "html-output.pdf");

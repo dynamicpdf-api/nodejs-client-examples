@@ -6,15 +6,14 @@ import {
     HtmlResource
 } from "@dynamicpdf/api"
 
+
+import {Constants} from './constants.js';
+
 export class HtmlToPdf {
     static async Run() {
-        var basePath = "C:/temp/html-to-pdf";
-        var apiKey = "DP.Hl2Bf2W4/gYolisjLNdGDdTtabv72VusVPQuTpBZnB+yRosSl90fUdYl";
-        var savePath = "c:/temp/html-to-pdf/html-output-node.pdf";
 
         var pdf = new Pdf();
-        pdf.basePath = "http://api.dynamicpdf.com/";
-        pdf.apiKey = apiKey;
+        pdf.apiKey = Constants.ApiKey;
 
         pdf.addHtml("<html>An example HTML fragment.</html>");
 
@@ -27,7 +26,7 @@ export class HtmlToPdf {
         var res = await pdf.process();
 
         if(res.isSuccessful) {
-            var outStream = fs.createWriteStream(savePath);
+            var outStream = fs.createWriteStream(Constants.OutputPath + "html-output-node.pdf");
             outStream.write(res.content);
             outStream.close();
         }

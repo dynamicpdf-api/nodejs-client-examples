@@ -4,12 +4,13 @@ import {
     FormField,
 } from "@dynamicpdf/api"
 
+import {Constants} from './constants.js';
 
 export class CompletingAcroForm {
     static async Run() {
 
         var pdf = new Pdf();
-        pdf.apiKey =  "DP.xLyUkwy0mKn/6iVPfoxL+2gJk1t5UdOBKPvT2pLwaU9IQYuq/zRY/FTE";
+        pdf.apiKey = Constants.ApiKey;
         pdf.addPdf("samples/fill-acro-form-pdf-endpoint/fw9AcroForm_18.pdf");
 
         var formField = new FormField("topmostSubform[0].Page1[0].f1_1[0]", "Any Company, Inc.");
@@ -34,11 +35,10 @@ export class CompletingAcroForm {
         var res = await pdf.process();
         
         if (res.isSuccessful) {
-            var outFile = "./output/fill-acro-form-nodejs-output.pdf";
+            var outFile = Constants.OutputPath + "fill-acro-form-nodejs-output.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();
-            console.log("Pdf was generated and saved at: ", outFile);
         }
         else {
             console.log(res.errorJson);

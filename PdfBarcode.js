@@ -5,16 +5,16 @@ import {
     RgbColor,
     Code11BarcodeElement
 } from "@dynamicpdf/api"
+        
+import {Constants} from './constants.js';
 
 export class PdfBarcode {
     
     static async Run() {
-        var outputPath = "C:/temp/dynamicpdf-api-samples/output/";
-        var apiKey = "DP--api-key--";
-        var pdf = new Pdf();
-        pdf.basePath = "https://api.dynamicpdf.com/";
-        pdf.apiKey = apiKey;
 
+        
+        var pdf = new Pdf();
+        pdf.apiKey = Constants.ApiKey;
         var pageInput = pdf.addPage(1008, 612);
         
         var code11BarcodeElement = new Code11BarcodeElement("12345678", elementPlacement.topCenter, 200, 50, 50);
@@ -23,7 +23,7 @@ export class PdfBarcode {
         var res = await pdf.process();
 
         if (res.isSuccessful) {
-            var outFile = outputPath + "barcode-createpdf-output.pdf";
+            var outFile = Constants.OutputPath + "barcode-create-pdf-output.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();

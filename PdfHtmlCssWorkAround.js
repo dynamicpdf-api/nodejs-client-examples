@@ -6,19 +6,19 @@ import {
     HtmlResource
 } from "@dynamicpdf/api"
 
+import {Constants} from './constants.js';
+
 export class PdfHtmlCssWorkAround {
 
     static async Run() {
 
-        var basePath = "c:/temp/users-guide-resources/";
-        var savePath = "c:/temp/dynamicpdf-api-usersguide-examples/nodejs-output/html-output-css-workaround.pdf";
 
         var pdf = new Pdf();
         pdf.basePath = "http://api.dynamicpdf.com/";
-        pdf.apiKey = "DP.xxx-api-key-xxx";
+        pdf.apiKey = Constants.ApiKey;
      
-        var tempHtml = fs.readFileSync(basePath + "example.html", 'utf8');
-        var tempCss = fs.readFileSync(basePath + "example.css", 'utf-8');
+        var tempHtml = fs.readFileSync(Constants.BasePath + "users-guide/example.html", 'utf8');
+        var tempCss = fs.readFileSync(Constants.BasePath + "users-guide/example.css", 'utf-8');
 
         var sb = tempHtml.substring(0, tempHtml.indexOf("<link"));
 
@@ -28,11 +28,11 @@ export class PdfHtmlCssWorkAround {
         sb = sb + tempHtml.substring(tempHtml.indexOf("/>") + 2);
 
         var resource = new HtmlResource(sb);
-        pdf.addHtml(resource, null, PageSize.LETTER, Orientation.PORTRAIT,1);
+        pdf.addHtml(resource);
         var res = await pdf.process();
 
         if(res.isSuccessful) {
-            var outStream = fs.createWriteStream(savePath);
+            var outStream = fs.createWriteStream(Constants.OutputPath + "html-output-css-workaround.pdf");
             outStream.write(res.content);
             outStream.close();
         }

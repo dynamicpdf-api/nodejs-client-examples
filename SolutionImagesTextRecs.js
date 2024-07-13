@@ -9,15 +9,14 @@ import {
     TextElement
 } from "@dynamicpdf/api"
 
+import {Constants} from './constants.js';
+
 export class SolutionImagesTextRecs {
 
     
     static async Run() {
-        var basePath = "C:/temp/solutions/combine-merge/";
-        var apiKey = "DP--api-key--";
         var pdf = new Pdf();
-        pdf.basePath = "https://api.dynamicpdf.com/";
-        pdf.apiKey = apiKey;
+        pdf.apiKey = Constants.ApiKey;
 
         var pageInput = pdf.addPage(1008, 612);
         
@@ -44,7 +43,7 @@ export class SolutionImagesTextRecs {
 
 
         if (res.isSuccessful) {
-            var outFile = basePath + "solutions-img-text-rec-example-output.pdf";
+            var outFile = Constants.OutputPath + "solutions-img-text-rec-example-output.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();

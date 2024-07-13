@@ -6,14 +6,15 @@ import {
     PdfResource
 } from "@dynamicpdf/api"
 
+import {Constants} from './constants.js';
 
 export class FormFieldFlattenDelete {
     static async Run() {
  
         var pdfEndpoint = new Pdf();
-        pdfEndpoint.apiKey =  "DP.--api-key--";
+        pdfEndpoint.apiKey =  Constants.ApiKey
 
-        var resource = new PdfResource("./resources/form-field-flatten/fw9AcroForm_14.pdf", "fw9AcroForm_14.pdf");
+        var resource = new PdfResource(Constants.BasePath + "form-field-flatten/fw9AcroForm_14.pdf", "fw9AcroForm_14.pdf");
         var input = new PdfInput(resource);
 
         pdfEndpoint.inputs.push(input);
@@ -43,11 +44,10 @@ export class FormFieldFlattenDelete {
         var res = await pdfEndpoint.process();
         
         if (res.isSuccessful) {
-            var outFile = "./output/form-flatten-delete-nodejs-output.pdf";
+            var outFile = Constants.OutputPath + "form-flatten-delete-nodejs-output.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();
-            console.log("Pdf was generated and saved at: ", outFile);
         }
         else {
             console.log(res.errorJson);

@@ -4,14 +4,15 @@ import {
     ImageResponse
 } from "@dynamicpdf/api"
 
+import {Constants} from './constants.js';
 
 export class GetImageInfo {
     static async Run() {
 
         
-        var imageResource = new ImageResource("./resources/image-info/getting-started.png");
+        var imageResource = new ImageResource(Constants.BasePath + "image-info/getting-started.png");
         var imageInfo = new ImageInfo(imageResource); 
-        imageInfo.apiKey = "DP--api-key--";
+        imageInfo.apiKey = Constants.ApiKey;
 
         var imageResponse = await imageInfo.process();
 

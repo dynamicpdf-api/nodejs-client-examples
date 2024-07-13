@@ -7,17 +7,18 @@ import {
 } from "@dynamicpdf/api"
 import { Console } from 'console';
 
+import {Constants} from './constants.js';
 
 export class AddBookmarks {
 
     static async Run() {
 
         var pdf = new Pdf();
-        pdf.apiKey = "DP--api-key--";
+        pdf.apiKey = Constants.ApiKey
 
-        var resourceA = new PdfResource("./resources/add-bookmarks/DocumentA.pdf");
-        var resourceB = new PdfResource("./resources/add-bookmarks/DocumentB.pdf");
-        var resourceC = new PdfResource("./resources/add-bookmarks/DocumentC.pdf");
+        var resourceA = new PdfResource(Constants.BasePath + "add-bookmarks/DocumentA.pdf");
+        var resourceB = new PdfResource(Constants.BasePath + "add-bookmarks/DocumentB.pdf");
+        var resourceC = new PdfResource(Constants.BasePath + "add-bookmarks/DocumentC.pdf");
 
         var inputA = pdf.addPdf(resourceA);
         inputA.Id = "DocumentA";
@@ -39,14 +40,14 @@ export class AddBookmarks {
         childOutlineB.color = RgbColor.orange;
         childOutlineC.color = RgbColor.green;
 
-        var outlineD = rootOutline.children.add("DynamicPDF Cloud API");
+        var outlineD = rootOutline.children.add("DynamicPDF API");
         outlineD.color = RgbColor.blue;
-        outlineD.action = new UrlAction("https://cloud.dynamicpdf.com/");
+        outlineD.action = new UrlAction("https://dpdf.io/");
 
         var res = await pdf.process();
 
         if (res.isSuccessful) {
-            var outFile = "./output/add-bookmarks-javascript-output.pdf";
+            var outFile = Constants.OutputPath + "add-bookmarks-javascript-output.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();

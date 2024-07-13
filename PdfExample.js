@@ -7,15 +7,13 @@ import {
     Font
 } from "@dynamicpdf/api"
 
-export class PdfExample {
+import {Constants} from './constants.js';
 
+export class PdfExample {
     
     static async Run() {
-        var basePath = "C:/temp/dynamicpdf-api-usersguide-examples/";
-        var apiKey = "DP.xxx-api-key-xxx";
         var pdf = new Pdf();
-        pdf.basePath = "https://api.dynamicpdf.com/";
-        pdf.apiKey = apiKey;
+        pdf.apiKey = Constants.ApiKey;
         var pageInput = pdf.addPage(1008, 612);
         var pageNumberingElement = new PageNumberingElement("1", elementPlacement.topRight);
         pageNumberingElement.color = RgbColor.red;
@@ -24,7 +22,7 @@ export class PdfExample {
         pageInput.elements.push(pageNumberingElement);
         var res = await pdf.process();
         if (res.isSuccessful) {
-            var outFile = basePath + "nodejs-pdf-example-output.pdf";
+            var outFile = Constants.OutputPath + "nodejs-pdf-example-output.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();
