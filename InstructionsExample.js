@@ -17,7 +17,9 @@ import {
     Orientation,
     HtmlResource,
     WordInput, 
-    WordResource
+    WordResource,
+    ExcelResource,
+    ExcelInput
 } from "@dynamicpdf/api"
 
 
@@ -28,6 +30,7 @@ export class InstructionsExample {
     static async Run() {
 	var basePath = Constants.BasePath + "users-guide/";
 
+    await this.ExcelExample(basePath);
     await this.BarcodeExample(basePath);
     await this.TemplateExample(basePath);
     await this.TopLevelMetaData(basePath);
@@ -69,6 +72,17 @@ export class InstructionsExample {
         await this.ProcessAndSave(pdf, "word-output.pdf");
     }
 
+
+    static async ExcelExample(basePath) {
+        var pdf = new Pdf();
+       
+        var resource = new ExcelResource( basePath + "sample-data.xlsx", "sample-data.xlsx");
+        var excel =new ExcelInput(resource);
+        pdf.inputs.push(excel);
+        await this.ProcessAndSave(pdf, "excel-output.pdf");
+    }
+
+
     static async ImageExample(basePath) {
         var pdf = new Pdf();
         var ir = new ImageResource(basePath + "A.png");
@@ -76,7 +90,7 @@ export class InstructionsExample {
 		
              
         //get image from cloud storage
-        pdf.addImage("samples/users-guide-resources/C.png");
+        pdf.addImage("samples/get-image-info-image-info-endpoint/dynamicpdfLogo.png");
         
         await this.ProcessAndSave(pdf, "image-json-output.pdf");
 
@@ -99,7 +113,7 @@ export class InstructionsExample {
         pdf.addHtml("<html><p>HTML with basePath.</p><img src='./images/logo.png'></img></html>",
         "https://www.dynamicpdf.com", null, PageSize.LETTER, Orientation.PORTRAIT,1);
         var resourcePath = basePath + "/products.html";
-        pdf.addHtml(new HtmlResource(resourcePath), null, PageSize.LETTER, Orientation.PORTRAIT, 1);
+        pdf.addHtml(new HtmlResource(resourcePath));
         await this.ProcessAndSave(pdf, "html-output.pdf");
     }
 
