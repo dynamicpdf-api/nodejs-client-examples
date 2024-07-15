@@ -59,12 +59,12 @@ export class SolutionImagesTextRecs {
         imageElement.yOffset = 75;
         pageInput.elements.push(imageElement);
 
-        console.log(pdf.instructions);
+        console.log(JSON.parse(pdf.getInstructionsJson(true)));
 
         var res = await pdf.process();
 
         if (res.isSuccessful) {
-            var outFile = Constants.OutputPath + "solutions-img-text-rec-example-output.pdf";
+            var outFile = Constants.OutputPath + "solutions-img-text-rec-node-js-example-output.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();
