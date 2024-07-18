@@ -3,7 +3,7 @@
 nodejs-client-examples 
 =========================================
 
-The Node.js Client Examples (`nodejs-client-examples`) project provides examples using the DynamicPDF Cloud API Node.js client library. This project contains numerous sample projects for the tutorials and examples at the [DynamicPDF Cloud API](https://cloud.dynamicpdf.com/) website.
+The Node.js Client Examples (`nodejs-client-examples`) project provides examples using the DynamicPDF API Node.js client library. This project contains numerous sample projects for the tutorials and examples at the [DynamicPDF  API](https://cloud.dynamicpdf.com/) website.
 
 The DynamicPDF API consists of the following six endpoints.
 
@@ -14,10 +14,12 @@ The DynamicPDF API consists of the following six endpoints.
 * `pdf-text`
 * `pdf-xmp`
 
-For more information, please visit [DynamicPDF API](https://cloud.dynamicpdf.com/ "DynamicPDF Cloud API Homepage"). Support for other languages/platforms (PHP, C#, Node.js) is available on GitHub ([DynamicPDF Cloud API at GitHub](https://github.com/dynamicpdf-api "DynamicPDF API at GitHub")).
+For more information, please visit [DynamicPDF API](https://dpdf.io/ "DynamicPDF API Homepage"). Support for other languages/platforms (PHP, C#, Node.js) is available on GitHub ([DynamicPDF API at GitHub](https://github.com/dynamicpdf-api "DynamicPDF API at GitHub")).
 
 Running Examples
 ----------------
+
+First add the DynamicPDF API key to constants.js.
 
 To install the `nodejs-client-examples` for the DynamicPDF API, run the following commands.
 
@@ -42,14 +44,14 @@ node <filename>.js
 
 ## Resources
 
-To obtain the resources for the project, login to [cloud.dynamicpdf.com](https://cloud.dynamicpdf.com/) (assuming you have an account), and go to the **File Manager**. You use the `samples` folder to add the resources for the tutorials and examples from this project.
+To obtain the resources for the project, login to [cloud.dynamicpdf.com](https://dpdf.io/) (assuming you have an account), and go to the **File Manager**. You use the `samples` folder to add the resources for the tutorials and examples from this project.
 
-- [Resource Manager Samples](https://cloud.dynamicpdf.com/docs/usersguide/environment-manager/environment-manager-sample-resources)  
+- [Resource Manager Samples](https://dpdf.io/docs/usersguide/environment-manager/environment-manager-sample-resources)  
 
 For more information on the tutorials and example code, refer to:
 
-- https://cloud.dynamicpdf.com/docs/tutorials/tutorials-overview
-- https://cloud.dynamicpdf.com/docs/usersguide/cloud-api/cloud-api-overview
+- https://dpdf.io/docs/tutorials/tutorials-overview
+- https://dpdf.io/docs/usersguide/cloud-api/cloud-api-overview
 
 ## **Tutorials**
 
