@@ -51,4 +51,4 @@ export class ImageConversion {
         }
     }
 }
-await ImageConversion.Run();
+//await ImageConversion.Run();

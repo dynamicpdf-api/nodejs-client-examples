@@ -24,4 +24,4 @@ export class DesignerReportTemplate {
         }
     }
 }
-await DesignerReportTemplate.Run();
+//await DesignerReportTemplate.Run();

@@ -30,4 +30,4 @@ export class DlexLayoutStringBufferExample {
         }
     }
 }
-await DlexLayoutStringBufferExample.Run();
+//await DlexLayoutStringBufferExample.Run();

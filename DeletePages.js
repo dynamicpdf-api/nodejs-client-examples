@@ -33,4 +33,4 @@ export class DeletePages {
         }
     }
 }
-await DeletePages.Run();
+//await DeletePages.Run();

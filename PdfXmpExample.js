@@ -18,4 +18,4 @@ export class PdfXmpExample {
         }
     }
 }
-await PdfXmpExample.Run();
+//await PdfXmpExample.Run();

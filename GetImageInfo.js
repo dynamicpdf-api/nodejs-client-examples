@@ -23,4 +23,4 @@ export class GetImageInfo {
         }
     }
 }
-await GetImageInfo.Run();
+//await GetImageInfo.Run();

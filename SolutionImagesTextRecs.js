@@ -71,4 +71,4 @@ export class SolutionImagesTextRecs {
         }
     }
 }
-await SolutionImagesTextRecs.Run();
+//await SolutionImagesTextRecs.Run();

@@ -278,4 +278,4 @@ export class InstructionsExample {
     }
 
 }
-await InstructionsExample.Run();
+//await InstructionsExample.Run();

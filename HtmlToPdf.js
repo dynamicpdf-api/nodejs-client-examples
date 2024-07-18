@@ -18,10 +18,10 @@ export class HtmlToPdf {
         pdf.addHtml("<html>An example HTML fragment.</html>");
 
         pdf.addHtml("<html><p>HTML with basePath.</p><img src='./images/logo.png'></img></html>",
-        "https://www.dynamicpdf.com", PageSize.LETTER, Orientation.PORTRAIT,1);
+        "https://www.dynamicpdf.com");
 
-        var resourcePath = basePath + "/products.html";
-        pdf.addHtml(new HtmlResource(resourcePath), null, PageSize.LETTER, Orientation.PORTRAIT, 1);
+        var resourcePath = Constants.BasePath + "/users-guide/products.html";
+        pdf.addHtml(new HtmlResource(resourcePath));
 
         var res = await pdf.process();
 
@@ -32,4 +32,4 @@ export class HtmlToPdf {
         }
     }
 }
-await HtmlToPdf.Run();
+//await HtmlToPdf.Run();

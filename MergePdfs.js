@@ -37,4 +37,4 @@ export class MergePdfs {
         }
     }
 }
-await MergePdfs.Run();
+//await MergePdfs.Run();

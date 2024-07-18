@@ -23,4 +23,4 @@ export class CreatingPdfDlexLayout {
         }
     }
 }
-await CreatingPdfDlexLayout.Run();
+//await CreatingPdfDlexLayout.Run();

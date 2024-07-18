@@ -23,4 +23,4 @@ export class GetXmpMetaData {
         }
     }
 }
-await GetXmpMetaData.Run();
+//await GetXmpMetaData.Run();

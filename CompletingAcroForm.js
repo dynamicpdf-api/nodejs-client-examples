@@ -45,4 +45,4 @@ export class CompletingAcroForm {
         }
     }
 }
-await CompletingAcroForm.Run();
+//await CompletingAcroForm.Run();

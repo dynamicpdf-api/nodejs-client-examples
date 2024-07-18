@@ -54,4 +54,4 @@ export class FormFieldFlattenDelete {
         }
     }
 }
-await FormFieldFlattenDelete.Run();
+//await FormFieldFlattenDelete.Run();

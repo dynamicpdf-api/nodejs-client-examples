@@ -38,4 +38,4 @@ export class PdfHtmlCssWorkAround {
         }
     }
 }
-await PdfHtmlCssWorkAround.Run();
+//await PdfHtmlCssWorkAround.Run();

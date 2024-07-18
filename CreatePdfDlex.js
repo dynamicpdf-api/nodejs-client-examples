@@ -62,4 +62,5 @@ export class CreatePdfDlex {
         }
     }
 }
-await CreatePdfDlex.Run();
+//awaiting fix to api to add additional resource
+//await CreatePdfDlex.Run();

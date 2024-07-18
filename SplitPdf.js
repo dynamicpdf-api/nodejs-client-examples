@@ -38,4 +38,4 @@ export class SplitPdf {
         }
     }
 }
-await SplitPdf.Run();
+//await SplitPdf.Run();

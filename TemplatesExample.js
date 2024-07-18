@@ -57,4 +57,4 @@ export class TemplatesExample {
         }
     }
 }
-await TemplatesExample.Run();
+//await TemplatesExample.Run();

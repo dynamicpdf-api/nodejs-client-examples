@@ -29,4 +29,4 @@ export class PdfExample {
         }
     }
 }
-await PdfExample.Run();
+//await PdfExample.Run();

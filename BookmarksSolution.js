@@ -36,4 +36,4 @@ export class BookmarksSolution {
         }
     }
 }
-await BookmarksSolution.Run();
+//await BookmarksSolution.Run();

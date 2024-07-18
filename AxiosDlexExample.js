@@ -53,4 +53,4 @@ export class AxiosDlexExample {
       });
   }
 }
-await AxiosDlexExample.Run();
+//await AxiosDlexExample.Run();

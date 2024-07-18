@@ -20,4 +20,4 @@ export class ExtractText {
         }
     }
 }
-await ExtractText.Run();
+//await ExtractText.Run();

@@ -30,4 +30,4 @@ export class PdfBarcode {
         }
     }
 }
-await PdfBarcode.Run();
+//await PdfBarcode.Run();

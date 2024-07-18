@@ -17,4 +17,4 @@ export class PdfInfoExample {
         }
     }
 }
-PdfInfoExample.Run();
+//await PdfInfoExample.Run();

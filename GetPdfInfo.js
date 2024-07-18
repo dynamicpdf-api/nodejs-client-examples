@@ -19,4 +19,4 @@ export class GetPdfInfo {
         }
     }
 }
-GetPdfInfo.Run();
+//await GetPdfInfo.Run();

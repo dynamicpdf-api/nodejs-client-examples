@@ -12,7 +12,7 @@ import {Constants} from './constants.js';
 export class AddBookmarks {
 
     static async Run() {
-
+        
         var pdf = new Pdf();
         pdf.apiKey = Constants.ApiKey
 
@@ -56,4 +56,4 @@ export class AddBookmarks {
         }
     }
 }
-await AddBookmarks.Run();
+//AddBookmarks.Run();

@@ -49,4 +49,4 @@ export class MergeSolution {
         
     }
 }
-await MergeSolution.Run();
+//await MergeSolution.Run();

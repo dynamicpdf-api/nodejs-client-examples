@@ -17,4 +17,4 @@ export class PdfTextExample {
         }
     }
 }
-await PdfTextExample.Run();
+//await PdfTextExample.Run();

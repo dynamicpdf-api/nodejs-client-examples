@@ -27,4 +27,4 @@ export class GettingStartedInFive {
     }
 }
 
-await GettingStartedInFive.Run();
+//await GettingStartedInFive.Run();

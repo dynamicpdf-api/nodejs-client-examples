@@ -35,4 +35,4 @@ export class ImageInfoExample {
         }
     }
 }
-await ImageInfoExample.Run();
+//await ImageInfoExample.Run();

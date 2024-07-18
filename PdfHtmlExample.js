@@ -31,4 +31,4 @@ export class PdfHtmlExample {
     }
 }
         
-await PdfHtmlExample.Run();
+//await PdfHtmlExample.Run();
