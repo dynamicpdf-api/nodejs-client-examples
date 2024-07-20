@@ -1,4 +1,10 @@
-﻿import fs from 'fs';
+﻿// ========================================================================
+// Author: DynamicPDF.COM CETE  www.dynamicpdf.com
+// Copyright: (c) 2021 DynamicPDF API
+// License: MIT - for additional information see ./LICENSE in this project.
+// Errors: Please report any errors in software to support@dynamicpdf.com
+// ========================================================================
+import fs from 'fs';
 import {
     Pdf,
     PdfResource,
@@ -6,7 +12,7 @@ import {
     UrlAction
 } from "@dynamicpdf/api"
 import { Console } from 'console';
-
+import { ClientApiUtility } from './ClientApiUtility.js';
 import {Constants} from './constants.js';
 
 export class AddBookmarks {
@@ -56,4 +62,4 @@ export class AddBookmarks {
         }
     }
 }
-//AddBookmarks.Run();
+AddBookmarks.Run();

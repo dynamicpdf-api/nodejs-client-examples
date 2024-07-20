@@ -5,10 +5,16 @@
 // Errors: Please report any errors in software to support@dynamicpdf.com
 // ========================================================================
 
-export const Constants = {
-    OutputPath : "./output/",
-    ApiKey : "DP--api-key--",
-    BasePath : "./resources/"
-}
- 
+import fs from 'fs';
 
+export class ClientApiUtility {
+
+    static async Run() {
+        if(!fs.existsSync("./output"))
+        {
+            fs.mkdirSync("./output");
+        }
+    }
+}
+await ClientApiUtility.Run();
+    

@@ -1,3 +1,10 @@
+// ========================================================================
+// Author: DynamicPDF.COM CETE  www.dynamicpdf.com
+// Copyright: (c) 2021 DynamicPDF API
+// License: MIT - for additional information see ./LICENSE in this project.
+// Errors: Please report any errors in software to support@dynamicpdf.com
+// ========================================================================
+
 import fs from 'fs';
 import {
     LayoutDataResource,
@@ -5,6 +12,7 @@ import {
 } from "@dynamicpdf/api"
 
 import {Constants} from './constants.js';
+import { ClientApiUtility } from './ClientApiUtility.js';
 
 export class DesignerReportTemplate {
     static async Run() {
@@ -24,4 +32,4 @@ export class DesignerReportTemplate {
         }
     }
 }
-//await DesignerReportTemplate.Run();
+await DesignerReportTemplate.Run();

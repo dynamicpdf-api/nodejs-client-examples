@@ -12,6 +12,7 @@ import {
 
 
 import {Constants} from './constants.js';
+import { ClientApiUtility } from './ClientApiUtility.js';
 
 export class TemplatesExample {
     
@@ -57,4 +58,4 @@ export class TemplatesExample {
         }
     }
 }
-//await TemplatesExample.Run();
+await TemplatesExample.Run();

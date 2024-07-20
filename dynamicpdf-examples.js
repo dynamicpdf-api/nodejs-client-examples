@@ -1,4 +1,13 @@
+// ========================================================================
+// Author: DynamicPDF.COM CETE  www.dynamicpdf.com
+// Copyright: (c) 2021 CeTe Software
+// License: MIT - for additional information see ./LICENSE in this project.
+// Errors: Please report any errors in software to support@dynamicpdf.com
+// ========================================================================
+
 import fs from 'fs';
+import path from 'path';
+import { ClientApiUtility } from './ClientApiUtility.js';
 import { AddBookmarks } from './AddBookmarks.js';
 import { AxiosDlexExample } from './AxiosDlexExample.js';
 import {BookmarksSolution} from './BookmarksSolution.js'
@@ -31,47 +40,17 @@ import {SolutionImagesTextRecs} from './SolutionImagesTextRecs.js'
 import {SplitPdf} from './SplitPdf.js'
 import { TemplatesExample } from './TemplatesExample.js';
 
+console.log("================================================================================");
+console.log("Ran all examples. Created PDFs in output folder:");
+console.log("================================================================================");
 
-export class DynamicPdfExamples {
-
-    static async Run() {
-
-        if(!fs.existsSync("./output"))
-        {
-            fs.mkdirSync("./output");
-        }
-
-        await AddBookmarks.Run();
-        await AxiosDlexExample.Run();
-        await BookmarksSolution.Run();
-        await CompletingAcroForm.Run();
-        await CreatingPdfDlexLayout.Run();
-        await DeletePages.Run();
-        await DesignerReportTemplate.Run();
-        await DlexLayoutExample.Run();
-        await DlexLayoutStringBufferExample.Run();
-        await ExtractText.Run();
-        await FormFieldFlattenDelete.Run();
-        await GetImageInfo.Run();
-        await GetPdfInfo.Run();
-        await GettingStartedInFive.Run();
-        await GetXmpMetaData.Run();
-        await HtmlToPdf.Run();
-        await ImageConversion.Run();
-        await ImageInfoExample.Run();
-        await InstructionsExample.Run();
-        await MergePdfs.Run();
-        await MergeSolution.Run();
-        await PdfBarcode.Run();
-        await PdfExample.Run();
-        await PdfHtmlCssWorkAround.Run();
-        await PdfHtmlExample.Run();
-        await PdfInfoExample.Run();
-        await PdfTextExample.Run();
-        await PdfXmpExample.Run();
-        await SolutionImagesTextRecs.Run();
-        await SplitPdf.Run();
-        await TemplatesExample.Run();
-    }
-}
-await DynamicPdfExamples.Run();
+const directoryPath = path.join(".", "output")
+await fs.readdir(directoryPath, function(err, files) {
+  if (err) {
+    console.log("Error getting directory information.")
+  } else {
+    files.forEach(function(file) {
+      console.log(file)
+    })
+  }
+})

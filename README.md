@@ -29,14 +29,14 @@ $ npm link nodejs-client-examples
 $ npm install
 ```
 
-To run all the examples at once, run DynamicPdfExample.js.
+To run all the examples at once, run `dynamicpdf-examples.js`
 ```bash
-node DynamicPdfExample.js
+node dynamicpdf-examples.js
 ```
 
-Each node.js file runs independently.  After removing the commented run command, run any of the provided classes as follows. For example, in TemplatesExample.js, remove the //
+Each node.js file runs independently. 
 
-//await TemplatesExample.Run()
+await TemplatesExample.Run()
 
 ```bash
 node <filename>.js
