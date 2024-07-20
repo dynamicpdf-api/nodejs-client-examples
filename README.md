@@ -34,7 +34,7 @@ To run all the examples at once, run `dynamicpdf-examples.js`
 node dynamicpdf-examples.js
 ```
 
-Each node.js file runs independently. 
+Each node.js file can also run independently. 
 
 await TemplatesExample.Run()
 
