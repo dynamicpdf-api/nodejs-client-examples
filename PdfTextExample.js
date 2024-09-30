@@ -22,6 +22,8 @@ export class PdfTextExample {
         var res = await pdfText.process();
         if (res.isSuccessful) {
             console.log(JSON.parse(res.content));
+        } else {
+                        
         }
     }
 }

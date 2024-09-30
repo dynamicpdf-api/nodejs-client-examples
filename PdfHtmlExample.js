@@ -34,6 +34,7 @@ export class PdfHtmlExample {
             outStream.write(res.content);
             outStream.close();
         } else {
+            
                 console.log(res.errorJson);
         }
     }
