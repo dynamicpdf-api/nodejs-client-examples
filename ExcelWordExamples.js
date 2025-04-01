@@ -34,7 +34,7 @@ export class ExcelWordExamples {
        var res = await pdf.process();
         
        if (res.isSuccessful) {
-           var outFile = Constants.OutputPath + "excel-output_nodejs.pdf";
+           var outFile = Constants.OutputPath + "excel-output-nodejs.pdf";
            var outStream = fs.createWriteStream(outFile);
            outStream.write(res.content);
            outStream.close();
@@ -52,7 +52,7 @@ export class ExcelWordExamples {
        var res = await pdf.process();
         
        if (res.isSuccessful) {
-           var outFile = Constants.OutputPath + "word-output_nodejs.pdf";
+           var outFile = Constants.OutputPath + "word-output-nodejs.pdf";
            var outStream = fs.createWriteStream(outFile);
            outStream.write(res.content);
            outStream.close();

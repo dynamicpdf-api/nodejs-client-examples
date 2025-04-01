@@ -36,10 +36,8 @@ export class SolutionImagesTextRecs {
         textElement.yOffset = 100
 		textElement.fontSize = 42;
 		pageInput.elements.push(textElement);
-        
 
-
-		var lineElement = new LineElement(elementPlacement.topCenter,200,200);
+		var lineElement = new LineElement(elementPlacement.topLeft,200,200);
 		lineElement.color = RgbColor.red;
         lineElement.xOffset = 305;
         lineElement.yOffset = 150
@@ -49,15 +47,14 @@ export class SolutionImagesTextRecs {
 		lineElement.width = 4;
 		pageInput.elements.push(lineElement);
 
-        var recElement = new RectangleElement(elementPlacement.TopCenter, 100, 500);
+        var recElement = new RectangleElement(elementPlacement.topCenter, 100, 500);
         recElement.xOffset = -250;
         recElement.yOffset = -10;
-        recElement.corner_radius = 10;
-        recElement.border_width = 5;
-        recElement.corner_radius = 10;
-        recElement.border_style = LineStyle.dots;
-        recElement.border_color = RgbColor.blue;
-        recElement.fill_color = RgbColor.green;
+        recElement.cornerRadius = 10;
+        recElement.borderWidth = 5;
+        recElement.borderStyle = LineStyle.dots;
+        recElement.borderColor = RgbColor.blue;
+        recElement.fillColor = RgbColor.green;
         pageInput.elements.push(recElement);
 
         var imgResource = new ImageResource(Constants.BasePath + "templates/dynamicpdfLogo.png");
@@ -67,8 +64,7 @@ export class SolutionImagesTextRecs {
         imageElement.yOffset = 75;
         pageInput.elements.push(imageElement);
 
-        console.log(JSON.parse(pdf.getInstructionsJson(true)));
-
+        console.log(pdf.getInstructionsJson(true));
         var res = await pdf.process();
 
         if (res.isSuccessful) {

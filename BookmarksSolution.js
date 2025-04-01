@@ -24,15 +24,27 @@ export class BookmarksSolution {
         pdf.apiKey = Constants.ApiKey;
 
         var pageInput1 = pdf.addPage();
-        var element1 = new TextElement("Hello World 2", elementPlacement.topCenter);
-	    pageInput1.elements.push(element1);
+       	var element1 = new TextElement("Hello World 1",elementPlacement.topCenter);
+        pageInput1.elements.push(element1);
 
-	    var pageInput2 = pdf.addPage();
-	    var element2 = new TextElement("Hello World 3", elementPlacement.topCenter);
+        var pageInput2 = pdf.addPage();
+        var element2 = new TextElement("Hello World 2", elementPlacement.topCenter);
 	    pageInput2.elements.push(element2);
 
+	    var pageInput3 = pdf.addPage();
+	    var element3 = new TextElement("Hello World 3", elementPlacement.topCenter);
+	    pageInput3.elements.push(element3);
+
 	    var inputA = pdf.addPdf(new PdfResource(basePath + "PdfOutlineInput.pdf"));
-	    
+        inputA.id = "pdfoutlineinput";
+
+        var rootOutline = pdf.outlines.add("Root Outline");
+
+        rootOutline.children.add("Page 1", pageInput1);
+        rootOutline.children.add("Page 2", pageInput2);
+        rootOutline.children.add("Page 3", pageInput3);
+	    rootOutline.children.addPdfOutlines(inputA);
+
         var res = await pdf.process();
        
         if (res.isSuccessful) {

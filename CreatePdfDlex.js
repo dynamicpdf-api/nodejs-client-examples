@@ -9,8 +9,7 @@ import fs from 'fs';
 import {
     Pdf,
     LayoutDataResource,
-    DlexResource,
-    Resource
+    DlexResource
 } from "@dynamicpdf/api"
 
 import {Constants} from './constants.js';
@@ -32,17 +31,13 @@ export class CreatePdfDlex {
         var layoutDataResource = new LayoutDataResource(basePath + "SimpleReportWithCoverPage.json");
         var dlexResource = new DlexResource(basePath + "SimpleReportWithCoverPage.dlex");
        
-        var dlexInput = pdf.addDlex(dlexResource, layoutDataResource);
-       
-        var resource = new Resource(basePath + "Northwind logo.gif", "Northwind logo.gif");
-        
-
-        //tbd - still need code to add additional resource
+        pdf.addDlex(dlexResource, layoutDataResource);
+        pdf.dlexAdditionalResource(basePath + "Northwind logo.gif", "Northwind logo.gif");        
 
         var res = await pdf.process();
 
         if (res.isSuccessful) {
-            var outFile = Constants.OutputPath + "create-pdf-dlex-output_nodejs.pdf";
+            var outFile = Constants.OutputPath + "create-pdf-dlex-output-local-nodejs.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();
@@ -53,7 +48,7 @@ export class CreatePdfDlex {
     
     static async RunRemote(basePath){
         var pdf = new Pdf();
-        pdf.apiKey = apiKey;
+        pdf.apiKey = Constants.ApiKey;
 
         var layoutDataResource = new LayoutDataResource(basePath + "SimpleReportWithCoverPage.json");
         pdf.addDlex("samples/creating-pdf-pdf-endpoint/SimpleReportWithCoverPage.dlex", layoutDataResource);
@@ -61,7 +56,7 @@ export class CreatePdfDlex {
         var res = await pdf.process();
 
         if (res.isSuccessful) {
-            var outFile = outputPath + "create-pdf-dlex-output_nodejs.pdf";
+            var outFile = Constants.OutputPath + "create-pdf-dlex-output-remote-nodejs.pdf";
             var outStream = fs.createWriteStream(outFile);
             outStream.write(res.content);
             outStream.close();
@@ -70,5 +65,5 @@ export class CreatePdfDlex {
         }
     }
 }
-awaiting fix to api to add additional resource
+// awaiting fix to api to add additional resource
 await CreatePdfDlex.Run();

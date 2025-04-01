@@ -24,8 +24,8 @@ export class SplitPdf {
         var pdf2 = new Pdf();
         pdf2.apiKey = Constants.ApiKey;
 
-        SplitPdf.Split(pdf, 1, 3, Constants.BasePath + "split-pdf/split-one.pdf")
-        SplitPdf.Split(pdf, 6, 2, Constants.BasePath + "split-pdf/split-two.pdf");
+        SplitPdf.Split(pdf, 1, 3, Constants.OutputPath + "split-one.pdf")
+        SplitPdf.Split(pdf2, 6, 2, Constants.OutputPath + "split-two.pdf");
  
     }
 

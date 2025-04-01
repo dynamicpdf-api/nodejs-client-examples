@@ -7,11 +7,12 @@
 
 import fs from 'fs';
 import path from 'path';
-import { ClientApiUtility } from './ClientApiUtility.js';
-import { AddBookmarks } from './AddBookmarks.js';
-import { AxiosDlexExample } from './AxiosDlexExample.js';
+import {ClientApiUtility} from './ClientApiUtility.js';
+import {AddBookmarks} from './AddBookmarks.js';
+import {AxiosDlexExample} from './AxiosDlexExample.js';
 import {BookmarksSolution} from './BookmarksSolution.js'
 import {CompletingAcroForm} from './CompletingAcroForm.js'
+import {CreatePdfDlex} from './CreatePdfDlex.js'
 import {CreatingPdfDlexLayout} from './CreatingPdfDlexLayout.js'
 import {DeletePages} from './DeletePages.js'
 import {DesignerReportTemplate} from './DesignerReportTemplate.js'
