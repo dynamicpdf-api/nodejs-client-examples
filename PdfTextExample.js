@@ -21,7 +21,7 @@ export class PdfTextExample {
         pdfText.apiKey = Constants.ApiKey;
         var res = await pdfText.process();
         if (res.isSuccessful) {
-            console.log(JSON.parse(res.content));
+            console.log(res.jsonContent);
         } else {
                         
         }

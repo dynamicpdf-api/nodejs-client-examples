@@ -22,7 +22,7 @@ export class ExtractText {
         pdfText.pageCount = 2;
         var res = await pdfText.process();
         if (res.isSuccessful) {
-            console.log(JSON.parse(res.content));
+            console.log(res.jsonContent);
         } else {
             console.log(res.errorJson);
         }

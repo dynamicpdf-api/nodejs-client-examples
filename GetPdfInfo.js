@@ -23,7 +23,7 @@ export class GetPdfInfo {
         var res = await pdfInfo.process();
         
         if (res.isSuccessful) {
-            console.log(JSON.parse(res.content));
+            console.log(res.jsonContent);
         }
     }
 }

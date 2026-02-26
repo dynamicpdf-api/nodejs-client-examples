@@ -27,7 +27,7 @@ export class ImageInfoExample {
         var response = await imageInfo.process();
 
         if (response.isSuccessful) {
-            console.log(JSON.parse(response.content));
+            console.log(response.jsonContent);
         }
     }
 
@@ -39,7 +39,7 @@ export class ImageInfoExample {
         var response = await imageInfo.process();
         
         if (response.isSuccessful) {
-            console.log(JSON.parse(response.content));
+            console.log(response.jsonContent);
         }
     }
 }

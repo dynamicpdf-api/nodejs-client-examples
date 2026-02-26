@@ -25,7 +25,7 @@ export class GetImageInfo {
         var imageResponse = await imageInfo.process();
 
         if (imageResponse.isSuccessful) {
-            console.log(JSON.parse(imageResponse.content));
+            console.log(imageResponse.jsonContent);
         } else {
             console.log(imageResponse.errorJson);
         }
